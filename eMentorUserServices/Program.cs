@@ -19,6 +19,7 @@ namespace eMentorUserServices
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseUrls("http://localhost:5998/")
                 .UseStartup<Startup>();
     }
 }
