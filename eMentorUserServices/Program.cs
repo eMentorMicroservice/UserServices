@@ -12,14 +12,50 @@ namespace eMentorUserServices
 {
     public class Program
     {
+        //public static void Main(string[] args)
+        //{
+        //    CreateWebHostBuilder(args).Build().Run();
+        //}
+
+        //public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        //    WebHost.CreateDefaultBuilder(args)
+        //        .UseUrls("http://localhost:5998/")
+        //        .UseStartup<Startup>();
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            var webHost = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var env = hostingContext.HostingEnvironment;
+                    config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+                    config.AddEnvironmentVariables();
+                })
+                .ConfigureLogging((hostingContext, logging) =>
+                {
+                    logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                    logging.AddConsole();
+                    logging.AddDebug();
+                    logging.AddEventSourceLogger();
+                    logging.ClearProviders();
+                })
+                .UseStartup<Startup>()
+                .Build();
+
+            webHost.Run();
+
+
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseUrls("http://localhost:5998/")
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                // .UseUrls("192.168.1.30:64765")
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.AddConsole();
+                });
     }
 }

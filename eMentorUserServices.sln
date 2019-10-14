@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eMentorUserServices", "eMen
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "library", "library", "{06876C3E-35F2-4354-BCE0-B5929C53DA47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMentor.DBContext", "eMentor.DBContext\eMentor.DBContext.csproj", "{3CCEA1C2-E380-4B07-A015-B81E50FFF93D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eMentor.DBContext", "eMentor.DBContext\eMentor.DBContext.csproj", "{3CCEA1C2-E380-4B07-A015-B81E50FFF93D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMentor.Common", "eMentor.Common\eMentor.Common.csproj", "{87017AC7-04EC-4ACF-A659-5FC7722B42AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eMentor.Common", "eMentor.Common\eMentor.Common.csproj", "{87017AC7-04EC-4ACF-A659-5FC7722B42AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMentor.Entities", "eMentor.Entities\eMentor.Entities.csproj", "{8E1AE414-9076-4EDC-AAAA-DE213934153A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{87017AC7-04EC-4ACF-A659-5FC7722B42AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87017AC7-04EC-4ACF-A659-5FC7722B42AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87017AC7-04EC-4ACF-A659-5FC7722B42AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E1AE414-9076-4EDC-AAAA-DE213934153A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E1AE414-9076-4EDC-AAAA-DE213934153A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E1AE414-9076-4EDC-AAAA-DE213934153A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E1AE414-9076-4EDC-AAAA-DE213934153A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{3CCEA1C2-E380-4B07-A015-B81E50FFF93D} = {06876C3E-35F2-4354-BCE0-B5929C53DA47}
 		{87017AC7-04EC-4ACF-A659-5FC7722B42AF} = {06876C3E-35F2-4354-BCE0-B5929C53DA47}
+		{8E1AE414-9076-4EDC-AAAA-DE213934153A} = {06876C3E-35F2-4354-BCE0-B5929C53DA47}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF3C339C-FC28-4A5E-A524-D59CBFF058F5}

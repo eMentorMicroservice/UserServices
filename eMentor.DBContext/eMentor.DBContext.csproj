@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
     <Folder Include="Repositories\impl\" />
   </ItemGroup>
 
@@ -16,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\eMentor.Common\eMentor.Common.csproj" />
+    <ProjectReference Include="..\eMentor.Entities\eMentor.Entities.csproj" />
   </ItemGroup>
 
 </Project>
