@@ -1,7 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <ApplicationIcon />
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="ApiModels\" />
+    <Folder Include="Utils\" />
+  </ItemGroup>
 
 </Project>
