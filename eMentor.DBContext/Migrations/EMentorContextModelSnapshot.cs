@@ -17,6 +17,44 @@ namespace eMentor.DBContext.Migrations
                 .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("eMentor.Entities.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Avatar");
+
+                    b.Property<DateTime>("Created");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FullName");
+
+                    b.Property<int>("Gender");
+
+                    b.Property<bool>("IsDeactivate");
+
+                    b.Property<bool>("IsFirstLogin");
+
+                    b.Property<bool>("IsHardCode");
+
+                    b.Property<DateTime>("Modified");
+
+                    b.Property<string>("PassCode");
+
+                    b.Property<string>("Phone");
+
+                    b.Property<int>("Role");
+
+                    b.Property<string>("Salt");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+                });
+
             modelBuilder.Entity("eMentor.Entities.HardCode", b =>
                 {
                     b.Property<int>("Id")
@@ -39,14 +77,14 @@ namespace eMentor.DBContext.Migrations
                     b.ToTable("HardCode");
 
                     b.HasData(
-                        new { Id = 1, Created = new DateTime(2019, 10, 14, 15, 58, 19, 681, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "UserRole", Value = 0 },
-                        new { Id = 2, Created = new DateTime(2019, 10, 14, 15, 58, 19, 681, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Quản Trị Viên", ParentId = "UserRole", Value = 1 },
-                        new { Id = 4, Created = new DateTime(2019, 10, 14, 15, 58, 19, 681, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Quản Lý", ParentId = "UserRole", Value = 2 },
-                        new { Id = 5, Created = new DateTime(2019, 10, 14, 15, 58, 19, 681, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Nhân Viên", ParentId = "UserRole", Value = 3 },
-                        new { Id = 20, Created = new DateTime(2019, 10, 14, 15, 58, 19, 681, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Gender", Value = 0 },
-                        new { Id = 21, Created = new DateTime(2019, 10, 14, 15, 58, 19, 681, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Nam", ParentId = "Gender", Value = 1 },
-                        new { Id = 22, Created = new DateTime(2019, 10, 14, 15, 58, 19, 681, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Nữ", ParentId = "Gender", Value = 2 },
-                        new { Id = 23, Created = new DateTime(2019, 10, 14, 15, 58, 19, 681, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Khác", ParentId = "Gender", Value = 3 }
+                        new { Id = 1, Created = new DateTime(2019, 10, 15, 16, 2, 2, 900, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "UserRole", Value = 0 },
+                        new { Id = 2, Created = new DateTime(2019, 10, 15, 16, 2, 2, 900, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Quản Trị Viên", ParentId = "UserRole", Value = 1 },
+                        new { Id = 4, Created = new DateTime(2019, 10, 15, 16, 2, 2, 900, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Quản Lý", ParentId = "UserRole", Value = 2 },
+                        new { Id = 5, Created = new DateTime(2019, 10, 15, 16, 2, 2, 900, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Nhân Viên", ParentId = "UserRole", Value = 3 },
+                        new { Id = 20, Created = new DateTime(2019, 10, 15, 16, 2, 2, 900, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Gender", Value = 0 },
+                        new { Id = 21, Created = new DateTime(2019, 10, 15, 16, 2, 2, 900, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Nam", ParentId = "Gender", Value = 1 },
+                        new { Id = 22, Created = new DateTime(2019, 10, 15, 16, 2, 2, 901, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Nữ", ParentId = "Gender", Value = 2 },
+                        new { Id = 23, Created = new DateTime(2019, 10, 15, 16, 2, 2, 901, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Khác", ParentId = "Gender", Value = 3 }
                     );
                 });
 #pragma warning restore 612, 618

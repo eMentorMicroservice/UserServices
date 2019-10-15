@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace eMentor.DBContext.Services
+﻿namespace eMentor.DBContext.Services
 {
     public interface IAppSettingService
     {
