@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eMentorUserServices", "eMentorUserServices\eMentorUserServices.csproj", "{74E14D9C-9E40-4D6E-B2AE-7652BC2E716B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{87017AC7-04EC-4ACF-A659-5FC7722B42AF} = {87017AC7-04EC-4ACF-A659-5FC7722B42AF}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "library", "library", "{06876C3E-35F2-4354-BCE0-B5929C53DA47}"
 EndProject
@@ -11,7 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eMentor.DBContext", "eMento
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eMentor.Common", "eMentor.Common\eMentor.Common.csproj", "{87017AC7-04EC-4ACF-A659-5FC7722B42AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMentor.Entities", "eMentor.Entities\eMentor.Entities.csproj", "{8E1AE414-9076-4EDC-AAAA-DE213934153A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eMentor.Entities", "eMentor.Entities\eMentor.Entities.csproj", "{8E1AE414-9076-4EDC-AAAA-DE213934153A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
