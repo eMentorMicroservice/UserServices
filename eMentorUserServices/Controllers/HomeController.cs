@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace eMentorUserServices.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class HomeController : BaseController
     {
         private readonly ITokenManager _tokenManager;
@@ -22,6 +23,7 @@ namespace eMentorUserServices.Controllers
         {
             _tokenManager = tokenManager;
         }
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginModel user)
