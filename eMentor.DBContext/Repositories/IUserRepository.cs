@@ -9,10 +9,6 @@ namespace eMentor.DBContext.Repositories
 
         List<User> SearchUserByName(string term, int userId);
 
-        User GetUserByNameAsync(string userName, bool includeDeactivated = false);
-
-        User GetUserByPhoneAsync(string phone, bool includeDeactivated = false);
-
         User GetUserByEmailAsync(string email, bool includeDeactivated = false);
 
         List<User> GetAllUser(int userId);

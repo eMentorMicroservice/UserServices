@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace eMentorUserServices.Controllers
@@ -24,11 +25,17 @@ namespace eMentorUserServices.Controllers
             _tokenManager = tokenManager;
         }
 
+        [HttpGet]
+        public ActionResult<IEnumerable<string>> Get()
+        {
+            return new string[] { "value1", "value2" };
+        }
+
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginModel user)
         {
-            if (user == null || string.IsNullOrWhiteSpace(user.PassCode)) return GetBadRequestResult(ErrorMessageCode.FIELDS_IS_EMPTY);
+            if (user == null || string.IsNullOrWhiteSpace(user.PassCode)) 
+                return GetBadRequestResult(ErrorMessageCode.FIELDS_IS_EMPTY);
 
             try
             {

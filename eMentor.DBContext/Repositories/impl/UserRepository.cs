@@ -28,18 +28,9 @@ namespace eMentor.DBContext.Repositories.impl
             return FirstOrDefault(p => p.UserName == userName, includeDeactivated);
         }
 
-        public  User GetUserByPhoneAsync(string phone, bool includeDeactivated = false)
-        {
-            return FirstOrDefault(p => p.Phone == phone, includeDeactivated);
-        }
         public  List<User> SearchUserByName(string term, int userId)
         {
             return GetAll(p => p.FullName.Contains(term) &&  p.Role != UserRole.Administrator && p.Id != userId).ToList();
-        }
-
-        public  User GetUserByUsernameAsync(string userName)
-        {
-            return  FirstOrDefault(p => p.UserName == userName, false);
         }
 
         public User GetUserAdmin()

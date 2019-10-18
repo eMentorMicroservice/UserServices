@@ -36,10 +36,6 @@ namespace eMentor.DBContext.Services.impl
             {
                 user = _userRepo.GetUserByEmailAsync(loginModel.Email, true);
             }
-            else if (!string.IsNullOrWhiteSpace(loginModel.Phone))
-                user = _userRepo.GetUserByPhoneAsync(loginModel.Phone, true);
-            else
-                user = _userRepo.GetUserByNameAsync(loginModel.UserName, true);
 
             if (user == null)
             {
