@@ -1,7 +1,6 @@
 ﻿using eMentor.Common.Models;
 using eMentor.Controllers;
 using eMentor.DBContext.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -11,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace eMentorUserServices.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Home")]
     [ApiController]
     public class HomeController : BaseController
     {
@@ -32,14 +31,15 @@ namespace eMentorUserServices.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] LoginModel user)
+        [Route("login")]
+        public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-            if (user == null || string.IsNullOrWhiteSpace(user.PassCode)) 
+            if (model == null || string.IsNullOrWhiteSpace(model.PassCode)) 
                 return GetBadRequestResult(ErrorMessageCode.FIELDS_IS_EMPTY);
 
             try
             {
-                var response = await _userService.LoginUser(user);
+                var response = await _userService.LoginUser(model);
 
                 if (response != null && response.Data != null)
                 {
