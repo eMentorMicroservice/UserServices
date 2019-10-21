@@ -85,5 +85,10 @@ namespace eMentor.DBContext.Services.impl
                 return result;
             }
         }
+
+        public Task<ResponseModel> RegisterUser(RegisterModel model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

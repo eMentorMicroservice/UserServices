@@ -55,5 +55,30 @@ namespace eMentorUserServices.Controllers
                 return GetServerErrorResult(ex.ToString());
             }
         }
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        {
+            if (model == null || string.IsNullOrWhiteSpace(model.Password))
+                return GetBadRequestResult(ErrorMessageCode.FIELDS_IS_EMPTY);
+            try
+            {
+                var response = await _userService.RegisterUser(model);
+
+                if (response != null && response.Data != null)
+                {
+                    return GetOKResult(response.Data);
+                }
+                else
+                {
+                    return GetResult(response);
+                }
+            }
+            catch (Exception ex)
+            {
+                return GetServerErrorResult(ex.ToString());
+            }
+        }
     }
 }
