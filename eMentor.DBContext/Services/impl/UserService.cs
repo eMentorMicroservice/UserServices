@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using eMentor.Common.ApiModels;
 using eMentor.Common.Models;
@@ -38,10 +36,6 @@ namespace eMentor.DBContext.Services.impl
             {
                 user = _userRepo.GetUserByEmailAsync(loginModel.Email, true);
             }
-            else if (!string.IsNullOrWhiteSpace(loginModel.Phone))
-                user = _userRepo.GetUserByPhoneAsync(loginModel.Phone, true);
-            else
-                user = _userRepo.GetUserByNameAsync(loginModel.UserName, true);
 
             if (user == null)
             {

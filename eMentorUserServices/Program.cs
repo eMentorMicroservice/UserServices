@@ -50,8 +50,8 @@ namespace eMentorUserServices
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseUrls("http://localhost:5998/")
                 .UseStartup<Startup>()
-                // .UseUrls("192.168.1.30:64765")
                 .ConfigureLogging(logging =>
                 {
                     logging.ClearProviders();
