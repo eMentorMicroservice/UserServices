@@ -86,9 +86,45 @@ namespace eMentor.DBContext.Services.impl
             }
         }
 
-        public Task<ResponseModel> RegisterUser(RegisterModel model)
+        public async Task<ResponseModel> CreateUser(UserApiModel model)
         {
-            throw new NotImplementedException();
+            var response = new ResponseModel();
+
+            try
+            {
+
+                var user = model.ToEntity(new User());
+                user.Salt = Guid.NewGuid().ToString().Replace("-", "");
+                user.PassCode = UtilCommon.GeneratePasscode(Constants.DEFAULT_PASSCODE, user.Salt);
+
+                var insert = await _userRepo.InsertAsync(user);
+                if (insert > -1)
+                {
+                    response.Data = insert;
+                    response.IsSuccess = true;
+                    response.Status = HttpStatusCode.OK;
+                    return response;
+                }
+                else
+                {
+                    response.IsSuccess = false;
+                    response.Error = ErrorMessageCode.SERVER_ERROR;
+                    response.Status = HttpStatusCode.InternalServerError;
+                    return response;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Error = ex.ToString();
+                response.Status = HttpStatusCode.InternalServerError;
+                return response;
+            }
+        }
+
+        public string ValidateAddUserData(UserApiModel model)
+        {
+            return _userRepo.ValidateAddUserData(model);
         }
     }
 }

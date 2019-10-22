@@ -47,5 +47,16 @@ namespace eMentor.DBContext.Repositories.impl
         {
             return GetAll(p => p.Role != UserRole.Administrator && p.Id != userId).ToList();
         }
+
+        public string ValidateAddUserData(UserApiModel model)
+        {
+            string error = null;
+
+            if (GetAll(p => (p.Email.Equals(model.Email)), false).Any())
+
+                return ErrorMessageCode.EMAIL_OR_PHONE_NUMBER_ALREADY_EXIST;
+
+            return error;
+        }
     }
 }

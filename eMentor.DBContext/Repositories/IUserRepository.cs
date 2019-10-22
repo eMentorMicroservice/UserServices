@@ -1,4 +1,5 @@
-﻿using eMentor.Entities.Entities;
+﻿using eMentor.Common.Models;
+using eMentor.Entities.Entities;
 using System.Collections.Generic;
 
 namespace eMentor.DBContext.Repositories
@@ -16,5 +17,6 @@ namespace eMentor.DBContext.Repositories
         User GetUserAdmin();
 
         bool IsUserExists(string userName);
+        string ValidateAddUserData(UserApiModel model);
     }
 }

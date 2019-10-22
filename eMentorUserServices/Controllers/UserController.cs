@@ -1,4 +1,5 @@
 ﻿using eMentor.Common.Models;
+using eMentor.Common.Utils;
 using eMentor.Controllers;
 using eMentor.DBContext.Services;
 using Microsoft.AspNetCore.Hosting;
@@ -25,23 +26,24 @@ namespace eMentorUserServices.Controllers
             _tokenManager = tokenManager;
         }
         [HttpPost]
-        [Route("login")]
-        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        [Route("register")]
+        public async Task<IActionResult> Register([FromBody] UserApiModel model)
         {
-            if (model == null || string.IsNullOrWhiteSpace(model.Password))
-                return GetBadRequestResult(ErrorMessageCode.FIELDS_IS_EMPTY);
             try
             {
-                var response = await _userService.RegisterUser(model);
+                if (!UtilCommon.IsValidEmail(model.Email))
+                {
+                    return GetBadRequestResult(ErrorMessageCode.EMAIL_INVALID);
+                }
 
-                if (response != null && response.Data != null)
+                var error = _userService.ValidateAddUserData(model);
+
+                if (!string.IsNullOrEmpty(error))
                 {
-                    return GetOKResult(response.Data);
+                    return GetBadRequestResult(error);
                 }
-                else
-                {
-                    return GetResult(response);
-                }
+
+                return GetResult(await _userService.CreateUser(model));
             }
             catch (Exception ex)
             {

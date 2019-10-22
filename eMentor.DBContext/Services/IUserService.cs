@@ -8,10 +8,12 @@ namespace eMentor.DBContext.Services
     {
         Task<ResponseModel> LoginUser(LoginModel apiLoginModel);
 
-        Task<ResponseModel> RegisterUser(RegisterModel model);
+        Task<ResponseModel> CreateUser(UserApiModel model);
 
         Task<User> GetUserById(int id);
 
         User GetUserAdmin();
+
+        string ValidateAddUserData(UserApiModel model);
     }
 }
