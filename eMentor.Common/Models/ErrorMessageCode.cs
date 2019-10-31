@@ -38,7 +38,7 @@ namespace eMentor.Common.Models
         public const string FINISH_TIME_INVALID = "finish_time_invalid"; //finish time invalid
         public const string YOU_CANT_LOG_OT_FOR_YESTERDAY = "you_cant_log_ot_for_yesterday"; //you cannot log over time for yesterday
         public const string WORK_TIME_INVALID = "work_time_invalid"; //work time invalid
-        public const string PROJECT_NOT_FOUND = "project_not_found"; //This username already exist.
+        public const string COURSE_NOT_FOUND = "course_not_found"; //This username already exist.
         public const string DELETE_DAYOFF_IS_FAILED = "delete_dayoff_is_failed"; //delete dayoff is failed.
         public const string DATETIME_INVALID = "datetime_invalid"; //This datetime is invalid.
         public const string USER_IS_EARLY_ACTIVATE = "user_is_early_activate"; // User is early activate

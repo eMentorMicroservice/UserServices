@@ -1,5 +1,6 @@
 ﻿using eMentor.Common.Models;
 using eMentor.Entities.Entities;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace eMentor.DBContext.Services
@@ -15,5 +16,9 @@ namespace eMentor.DBContext.Services
         User GetUserAdmin();
 
         string ValidateAddUserData(UserApiModel model);
+
+        List<User> GetStudents();
+
+        List<User> GetTeachers();
     }
 }

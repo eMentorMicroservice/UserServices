@@ -16,5 +16,6 @@ namespace eMentor.Entities.Entities
         public string FullName { get; set; }
         public Gender Gender { get; set; }
         public string Avatar { get; set; }
+        public string Rating { get; set; }
     }
 }

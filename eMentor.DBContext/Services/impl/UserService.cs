@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using eMentor.Common.ApiModels;
 using eMentor.Common.Models;
 using eMentor.Common.Utils;
 using eMentor.Entities.Entities;
+using static eMentor.Common.Utils.UtilEnum;
 
 namespace eMentor.DBContext.Services.impl
 {
@@ -125,6 +127,16 @@ namespace eMentor.DBContext.Services.impl
         public string ValidateAddUserData(UserApiModel model)
         {
             return _userRepo.ValidateAddUserData(model);
+        }
+
+        public List<User> GetStudents()
+        {
+            return _userRepo.GetUsers(UserRole.Student);
+        }
+
+        public List<User> GetTeachers()
+        {
+            return _userRepo.GetUsers(UserRole.Teacher);
         }
     }
 }

@@ -1,6 +1,9 @@
 ﻿using eMentor.Common.Models;
+using eMentor.Common.Utils;
 using eMentor.Entities.Entities;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using static eMentor.Common.Utils.UtilEnum;
 
 namespace eMentor.DBContext.Repositories
 {
@@ -18,5 +21,6 @@ namespace eMentor.DBContext.Repositories
 
         bool IsUserExists(string userName);
         string ValidateAddUserData(UserApiModel model);
+        List<User> GetUsers(UserRole userRole);
     }
 }

@@ -85,7 +85,10 @@ namespace eMentorUserServices
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<TokenManagerMiddleware>();
+            services.AddTransient<ICourseService, CourseService>();
 
+
+            //JWT
             var jwtSection = _configuration.GetSection("jwt");
 
             services.AddAuthentication()

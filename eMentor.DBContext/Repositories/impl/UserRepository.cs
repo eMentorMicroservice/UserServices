@@ -1,8 +1,10 @@
 ﻿using eMentor.Common.Models;
+using eMentor.Common.Utils;
 using eMentor.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using static eMentor.Common.Utils.UtilEnum;
 
 namespace eMentor.DBContext.Repositories.impl
@@ -57,6 +59,11 @@ namespace eMentor.DBContext.Repositories.impl
                 return ErrorMessageCode.EMAIL_OR_PHONE_NUMBER_ALREADY_EXIST;
 
             return error;
+        }
+
+        public List<User> GetUsers(UserRole userRole)
+        {
+           return GetAll(p => p.Role == userRole).ToList();
         }
     }
 }

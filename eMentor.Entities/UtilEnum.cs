@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace eMentor.Common.Utils
+﻿namespace eMentor.Common.Utils
 {
     public static class UtilEnum
     {
@@ -15,8 +11,19 @@ namespace eMentor.Common.Utils
         public enum Gender
         {
             Male = 1,
-            Female = 2,
-            Other = 3
+            Female,
+            Other
+        }
+
+        public enum CourseType
+        {
+            Design = 1,
+            Drawing,
+            Language,
+            Math,
+            Programming,
+            Science,
+            Psycho
         }
     }
 }
