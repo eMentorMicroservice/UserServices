@@ -55,7 +55,7 @@ namespace eMentorUserServices.Controllers
         [HttpGet]
         [Produces("application/json")]
         [Route("[action]")]
-        public async Task<IActionResult> GetProjects(string term = "", int? id = null, bool isViewCourse = false)
+        public async Task<IActionResult> GetCourses(string term = "", int? id = null, bool isViewCourse = false)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace eMentorUserServices.Controllers
         [HttpPost]
         [Produces("application/json")]
         [Route("[action]")]
-        public async Task<IActionResult> RemoveProject(int courseId)
+        public async Task<IActionResult> RemoveCourse(int courseId)
         {
             if (courseId == 0) return GetBadRequestResult(ErrorMessageCode.COURSE_NOT_FOUND);
 
@@ -109,13 +109,13 @@ namespace eMentorUserServices.Controllers
         /// <summary>
         /// Edit Project.
         /// </summary>
-        /// <returns>Edit Project.</returns>
+        /// <returns>Edit Course.</returns>
         /// <response code="200">Project</response>
         /// <response code="500">Server Error.</response>
         [HttpPost]
         [Produces("application/json")]
         [Route("[action]")]
-        public async Task<IActionResult> EditProject([FromForm]CourseModel model)
+        public async Task<IActionResult> EditCourse([FromForm]CourseModel model)
         {
             try
             {
