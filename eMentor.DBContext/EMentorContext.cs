@@ -31,6 +31,14 @@ namespace eMentor.DBContext
             modelBuilder.Entity<User>().HasData(new User { Id = index++, UserName = "Teacher5", Email = "teacher5@gmail.com", FullName = "Mr 5", Salt = salt, PassCode = UtilCommon.GeneratePasscode("123456x@X", salt), Gender = Gender.Other, Role = UserRole.Teacher, Phone = "0132666661", IsDeactivate = false, IsFirstLogin = false, IsHardCode = true });
             modelBuilder.Entity<User>().HasData(new User { Id = index++, UserName = "Teacher6", Email = "teacher6@gmail.com", FullName = "Mr 6", Salt = salt, PassCode = UtilCommon.GeneratePasscode("123456x@X", salt), Gender = Gender.Other, Role = UserRole.Teacher, Phone = "0132666660", IsDeactivate = false, IsFirstLogin = false, IsHardCode = true });
 
+            index = 1;
+            modelBuilder.Entity<Course>().HasData(new Course { Id = index++, Name = "Logo Design Course", CourseType = CourseType.Design, Description = "Master of Design Architechture", OwnerId= 2, IsAvailable=true, IsDeactivate = false });
+            modelBuilder.Entity<Course>().HasData(new Course { Id = index++, Name = "Static Drawing", CourseType = CourseType.Drawing, Description = "Hand Drawing", OwnerId = 3, IsAvailable = true, IsDeactivate = false });
+            modelBuilder.Entity<Course>().HasData(new Course { Id = index++, Name = "English", CourseType = CourseType.Language, Description = "Master of English", OwnerId = 4, IsAvailable = true, IsDeactivate = false });
+            modelBuilder.Entity<Course>().HasData(new Course { Id = index++, Name = "Dominate The Dericurtive", CourseType = CourseType.Math, Description = "Calculate as A Calculater", OwnerId = 5, IsAvailable = true, IsDeactivate = false });
+            modelBuilder.Entity<Course>().HasData(new Course { Id = index++, Name = "JS in a nutshell", CourseType = CourseType.Programming, Description = "Become a full stack with JS", OwnerId = 6, IsAvailable = true, IsDeactivate = false });
+            modelBuilder.Entity<Course>().HasData(new Course { Id = index++, Name = "Criminal Act", CourseType = CourseType.Psycho, Description = "Learning how a crimer think", OwnerId = 7, IsAvailable = true, IsDeactivate = false });
+
 
             index = 1;
             modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "UserRole", Created = DateTime.UtcNow, ParentId = null, Value = 0 });

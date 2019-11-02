@@ -74,29 +74,17 @@ namespace eMentor.DBContext.Services.impl
             }
         }
 
-        public async Task<IList<CourseApiModel>> GetCourses(int userId, string term, int? courseId = null)
+        public async Task<IList<CourseApiModel>> GetCourses(string term, int? courseId = null)
         {
             IList<CourseApiModel> models = new List<CourseApiModel>();
             IList<Course> courses = new List<Course>();
 
             if (courseId == null)
             {
-                var user = await _userRepo.GetByIdAsync(userId);
-
-                if (user.Role == UtilEnum.UserRole.Administrator)
-                {
                     if (!string.IsNullOrEmpty(term))
                         courses = _courseRepo.GetCoursesByTerm(term);
                     else
                         courses = _courseRepo.GetCourses();
-                }
-                else
-                {
-                    if (!string.IsNullOrEmpty(term))
-                        courses = _courseUserMapRepo.GetCoursesByUserAndTerm(userId, term);
-                    else
-                        courses = _courseUserMapRepo.GetCoursesByUser(userId);
-                }
             }
             else
             {

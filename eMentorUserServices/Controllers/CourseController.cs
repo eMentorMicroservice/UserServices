@@ -54,12 +54,12 @@ namespace eMentorUserServices.Controllers
 
         [HttpGet]
         [Produces("application/json")]
-        [Route("[action]")]
+        [Route("getcourses")]
         public async Task<IActionResult> GetCourses(string term = "", int? id = null, bool isViewCourse = false)
         {
             try
             {
-                var result = await _courseService.GetCourses(CurrentUser.UserId, term, id);
+                var result = await _courseService.GetCourses(term, id);
                 if (result != null)
                 {
                     if (id != null)
