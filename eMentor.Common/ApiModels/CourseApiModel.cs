@@ -14,6 +14,10 @@ namespace eMentor.Common.ApiModels
 
         public string Description { get; set; }
 
+        public int OwnerId { get; set; }
+
+        public User Owner { get; set; }
+
         public CourseApiModel()
         {
         }
@@ -26,6 +30,8 @@ namespace eMentor.Common.ApiModels
             model.Id = entity.Id;
             model.Name = entity.Name;
             model.Description = entity.Description;
+            model.OwnerId = entity.OwnerId;
+            model.Owner = entity.Owner;
             return model;
         }
 

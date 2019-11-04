@@ -23,7 +23,14 @@ namespace eMentor.DBContext.Repositories.impl
             IList<Course> courses = new List<Course>();
             if (courseId == null)
             {
-                courses = GetAll();
+                using (var context = ContextFactory.CreateDbContext())
+                {
+                    var query = from b in context.Set<Course>().Include(p=>p.Owner)
+                                select b;
+
+
+                    return query.ToList();
+                }
             }
             else
             {

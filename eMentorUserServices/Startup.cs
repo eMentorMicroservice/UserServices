@@ -67,7 +67,8 @@ namespace eMentorUserServices
 
             services.AddDbContext<EMentorContext>(options =>
             {
-                options.UseMySql(_configuration.GetConnectionString("DefaultConnection"));
+                options
+                .UseMySql(_configuration.GetConnectionString("DefaultConnection"));
             });
 
             var settingsSection = _configuration.GetSection("ConnectionStrings");
