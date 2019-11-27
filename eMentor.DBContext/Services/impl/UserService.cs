@@ -94,12 +94,14 @@ namespace eMentor.DBContext.Services.impl
 
             try
             {
-
                 var user = model.ToEntity(new User());
+
                 user.Salt = Guid.NewGuid().ToString().Replace("-", "");
-                user.PassCode = UtilCommon.GeneratePasscode(Constants.DEFAULT_PASSCODE, user.Salt);
+                user.PassCode = UtilCommon.GeneratePasscode(model.PassWord, user.Salt);
+                user.Role = UserRole.Student;
 
                 var insert = await _userRepo.InsertAsync(user);
+
                 if (insert > -1)
                 {
                     response.Data = insert;

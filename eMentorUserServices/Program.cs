@@ -12,15 +12,6 @@ namespace eMentorUserServices
 {
     public class Program
     {
-        //public static void Main(string[] args)
-        //{
-        //    CreateWebHostBuilder(args).Build().Run();
-        //}
-
-        //public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        //    WebHost.CreateDefaultBuilder(args)
-        //        .UseUrls("http://localhost:5998/")
-        //        .UseStartup<Startup>();
         public static void Main(string[] args)
         {
             var webHost = new WebHostBuilder()
@@ -42,10 +33,7 @@ namespace eMentorUserServices
                 })
                 .UseStartup<Startup>()
                 .Build();
-
             webHost.Run();
-
-
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
