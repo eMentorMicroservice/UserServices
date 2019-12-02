@@ -20,5 +20,7 @@ namespace eMentor.DBContext.Services
         List<User> GetStudents();
 
         List<User> GetTeachers();
+
+        Task<ResponseModel> ChangePasscode(int idUser, ChangePasscodeModel changePasscode);
     }
 }

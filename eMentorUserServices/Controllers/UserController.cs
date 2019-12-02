@@ -2,6 +2,8 @@
 using eMentor.Common.Utils;
 using eMentor.Controllers;
 using eMentor.DBContext.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace eMentorUserServices.Controllers
 {
-    [Route("api/user")]
+    [Route("api/User")]
     [ApiController]
     public class UserController : BaseController
     {
@@ -26,7 +28,7 @@ namespace eMentorUserServices.Controllers
             _tokenManager = tokenManager;
         }
         [HttpPost]
-        [Route("register")]
+        [Route("[action]")]
         public async Task<IActionResult> Register([FromBody] UserApiModel model)
         {
             try
@@ -44,6 +46,27 @@ namespace eMentorUserServices.Controllers
                 }
 
                 return GetResult(await _userService.CreateUser(model));
+            }
+            catch (Exception ex)
+            {
+                return GetServerErrorResult(ex.ToString());
+            }
+        }
+
+        
+        [HttpPost]
+        [Route("[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> ChangePasscode([FromBody] ChangePasscodeModel model)
+        {
+            if (model == null || string.IsNullOrWhiteSpace(model.NewPasscode) || string.IsNullOrWhiteSpace(model.OldPasscode)) return GetBadRequestResult(ErrorMessageCode.FIELDS_IS_EMPTY);
+
+            try
+            {
+                var userId = CurrentUser.UserId;
+                var response = await _userService.ChangePasscode(userId, model);
+
+                return GetResult(response);
             }
             catch (Exception ex)
             {

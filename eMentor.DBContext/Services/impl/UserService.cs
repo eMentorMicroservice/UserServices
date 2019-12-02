@@ -140,5 +140,64 @@ namespace eMentor.DBContext.Services.impl
         {
             return _userRepo.GetUsers(UserRole.Teacher);
         }
+
+        public async Task<ResponseModel> ChangePasscode(int idUser, ChangePasscodeModel changePasscode)
+        {
+            ResponseModel result = new ResponseModel();
+
+            if (!UtilCommon.IsValidPassword(changePasscode.NewPasscode))
+            {
+                result.Error = ErrorMessageCode.PASSWORD_INVALID;
+                result.Status = System.Net.HttpStatusCode.BadRequest;
+                return result;
+            }
+
+            var user = await _userRepo.GetByIdAsync(idUser);
+
+            if (user == null)
+            {
+                result.Error = ErrorMessageCode.USER_NOT_FOUND;
+                result.Status = System.Net.HttpStatusCode.BadRequest;
+                return result;
+            }
+
+            if (!user.PassCode.Equals(UtilCommon.GeneratePasscode(changePasscode.OldPasscode, user.Salt)))
+            {
+                result.Error = ErrorMessageCode.PASSWORD_INVALID;
+                result.Status = System.Net.HttpStatusCode.BadRequest;
+                return result;
+            }
+
+            try
+            {
+                string newPasscode = UtilCommon.GeneratePasscode(changePasscode.NewPasscode, user.Salt);
+
+                user.PassCode = newPasscode;
+                var res = await _userRepo.UpdateAsync(user);
+                if (res != Constants.REPOSITORY_FAILED)
+                {
+                    result.Status = System.Net.HttpStatusCode.OK;
+                    result.IsSuccess = true;
+                    if (user.IsFirstLogin)
+                    {
+                        user.IsFirstLogin = false;
+                        await _userRepo.UpdateAsync(user);
+                    }
+                    return result;
+                }
+                else
+                {
+                    result.Error = ErrorMessageCode.UPDATE_PASSWORD_FAILED;
+                    result.Status = System.Net.HttpStatusCode.InternalServerError;
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Error = ex.ToString();
+                result.Status = System.Net.HttpStatusCode.NotImplemented;
+                return result;
+            }
+        }
     }
 }
