@@ -1,4 +1,5 @@
 ﻿using eMentor.Entities.Entities.Base;
+using System;
 using static eMentor.Common.Utils.UtilEnum;
 
 namespace eMentor.Entities.Entities
@@ -17,5 +18,8 @@ namespace eMentor.Entities.Entities
         public Gender Gender { get; set; }
         public string Avatar { get; set; }
         public string Rating { get; set; }
+        public string Address { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string LinkedSite { get; set; }
     }
 }

@@ -8,7 +8,9 @@ namespace eMentor.Common.Models
 {
     public class UserApiModel
     {
-        public UserApiModel() {   }
+        public UserApiModel() 
+        {   
+        }
         [JsonProperty(PropertyName = "userid")]
         public int UserId { get; set; }
 
@@ -58,6 +60,15 @@ namespace eMentor.Common.Models
 
         [JsonProperty(PropertyName = "phone")]
         public string Phone { get;  set; }
+
+        [JsonProperty(PropertyName = "dateofbirth")]
+        public string DateOfBirth { get; set; }
+
+        [JsonProperty(PropertyName = "linkedsite")]
+        public string LinkedSite { get; set; }
+
+        [JsonProperty(PropertyName = "address")]
+        public string Address { get; set; }
     }
 
     public class UserIdModel
@@ -80,7 +91,7 @@ namespace eMentor.Common.Models
             return entity;
         }
 
-        public static UserModel ToUserModel(this User user, UserRole role, bool isSelfProfile)
+        public static UserModel ToUserModel(this User user, UserRole role)
         {
             var model = new UserModel();
 
@@ -91,7 +102,14 @@ namespace eMentor.Common.Models
                 model.FullName = user.FullName;
                 model.Email = user.Email;
                 model.Phone = user.Phone;
+                model.Role = user.Role;
                 model.Gender = user.Gender;
+                model.LinkedSite = user.LinkedSite;
+                model.Address = user.Address;
+                if (string.IsNullOrWhiteSpace(user.DateOfBirth.ToString()))
+                    model.DateOfBirth = Constants.DEFAULT_DATEOFBIRTH;
+                else
+                    model.DateOfBirth = user.DateOfBirth.ToString();
             }
 
             return model;

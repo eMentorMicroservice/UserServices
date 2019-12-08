@@ -53,7 +53,30 @@ namespace eMentorUserServices.Controllers
             }
         }
 
-        
+        [HttpGet]
+        [Produces("application/json")]
+        [Route("[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> GetUserProfile()
+        {
+            try
+            {
+                var user = await _userService.GetUserProfile(CurrentUser);
+
+                if (user != null)
+                {
+                    return GetOKResult(user.ToUserModel(CurrentUser.UserRole));
+                }
+
+                return GetServerErrorResult(ErrorMessageCode.SERVER_ERROR);
+            }
+            catch (Exception ex)
+            {
+                return GetServerErrorResult(ex.ToString());
+            }
+        }
+
+
         [HttpPost]
         [Route("[action]")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -63,8 +86,7 @@ namespace eMentorUserServices.Controllers
 
             try
             {
-                var userId = CurrentUser.UserId;
-                var response = await _userService.ChangePasscode(userId, model);
+                var response = await _userService.ChangePasscode(CurrentUser.UserId, model);
 
                 return GetResult(response);
             }

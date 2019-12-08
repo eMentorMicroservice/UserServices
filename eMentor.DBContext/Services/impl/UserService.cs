@@ -199,5 +199,10 @@ namespace eMentor.DBContext.Services.impl
                 return result;
             }
         }
+
+        public async Task<User> GetUserProfile(UserTokenModel currentUser)
+        {
+            return await _userRepo.GetByIdAsync(currentUser.UserId);
+        }
     }
 }

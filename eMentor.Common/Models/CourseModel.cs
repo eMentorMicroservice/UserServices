@@ -13,7 +13,7 @@ namespace eMentor.Common.Models
         public string Description { get; set; }
     }
 
-    public static class CreateProjectModelEmm
+    public static class CreateCourseModelEmm
     {
         public static Course ToEntity(this CourseModel model, Course course)
         {

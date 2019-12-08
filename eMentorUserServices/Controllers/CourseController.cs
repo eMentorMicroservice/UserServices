@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 
 namespace eMentorUserServices.Controllers
 {
-    [Route("api/course")]
+    [Route("api/Course")]
     [ApiController]
     public class CourseController : BaseController
     {
@@ -54,7 +54,7 @@ namespace eMentorUserServices.Controllers
 
         [HttpGet]
         [Produces("application/json")]
-        [Route("getcourses")]
+        [Route("[action]")]
         public async Task<IActionResult> GetCourses(string term = "", int? id = null, bool isViewCourse = false)
         {
             try
