@@ -25,6 +25,24 @@ namespace eMentor.Common.Models
 
         [JsonProperty(PropertyName= "password")]
         public string PassWord { get; set; }
+
+        [JsonProperty(PropertyName = "phone")]
+        public string Phone { get; set; }
+
+        [JsonProperty(PropertyName = "avatar")]
+        public string Avatar { get; set; }
+
+        [JsonProperty(PropertyName = "gender")]
+        public Gender Gender { get; set; }
+
+        [JsonProperty(PropertyName = "dateofbirth")]
+        public string DateOfBirth { get; set; }
+
+        [JsonProperty(PropertyName = "linkedsite")]
+        public string LinkedSite { get; set; }
+
+        [JsonProperty(PropertyName = "address")]
+        public string Address { get; set; }
     }
 
     public class UserModel
@@ -86,6 +104,11 @@ namespace eMentor.Common.Models
             entity.PassCode = model.PassWord;
             entity.Email = model.Email;
             entity.FullName = model.FullName;
+            entity.LinkedSite = model.LinkedSite;
+            entity.Address = model.Address;
+            entity.Phone = model.Phone;
+            entity.Gender = model.Gender;
+            entity.DateOfBirth = UtilCommon.ConvertDateTime(model.DateOfBirth, Constants.DATETIME_FORMAT);
             entity.Id = model.UserId;
 
             return entity;

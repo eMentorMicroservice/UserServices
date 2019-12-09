@@ -6,6 +6,7 @@ using eMentor.Common.ApiModels;
 using eMentor.Common.Models;
 using eMentor.Common.Utils;
 using eMentor.Entities.Entities;
+using Microsoft.AspNetCore.Http;
 using static eMentor.Common.Utils.UtilEnum;
 
 namespace eMentor.DBContext.Services.impl
@@ -203,6 +204,15 @@ namespace eMentor.DBContext.Services.impl
         public async Task<User> GetUserProfile(UserTokenModel currentUser)
         {
             return await _userRepo.GetByIdAsync(currentUser.UserId);
+        }
+
+        public async Task<int> EditProfile(UserApiModel model, IFormFile uploadedFile, User userEntity)
+        {
+            userEntity = model.ToEntity(userEntity);
+
+            userEntity.Avatar = UtilCommon.ImageUpload(Constants.UserDataFolderName, uploadedFile, userEntity.Avatar, false);
+
+            return await _userRepo.UpdateAsync(userEntity);
         }
     }
 }

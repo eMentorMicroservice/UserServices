@@ -121,6 +121,29 @@ namespace eMentor.Common.Utils
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+        public static DateTime ConvertDateTime(object value, string dATETIME_FORMAT)
+        {
+            try
+            {
+                var defaultValue = DateTime.MinValue;
+
+                if (value == null || value == DBNull.Value)
+                {
+                    return defaultValue;
+                }
+
+                DateTime.TryParseExact(value.ToString(), dATETIME_FORMAT, CultureInfo.InvariantCulture,
+                              DateTimeStyles.None, out defaultValue);
+
+                return defaultValue;
+
+            }
+            catch (Exception)
+            {
+                return DateTime.MinValue;
+            }
+        }
+
         public static string GeneratePasscode(string passcode, string salt)
         {
             byte[] plainTextWithSaltBytes = Encoding.UTF8.GetBytes(passcode + salt);
@@ -129,15 +152,20 @@ namespace eMentor.Common.Utils
             return Convert.ToBase64String(buffer);
         }
 
-        public static string ImageUpload(string folderDir, IFormFile uploadedFile)
+        public static string ImageUpload(string folderDir, IFormFile uploadedFile, string oldName = "", bool isDelete = false)
         {
             string fileName = null;
+            var path = Path.Combine(Directory.GetCurrentDirectory(), folderDir);
+
+            if (isDelete)
+            {
+                return DeleteFile(folderDir, oldName);
+            }
 
             if (uploadedFile != null && uploadedFile.Length > 0)
             {
                 fileName = Guid.NewGuid().ToString() + "." + uploadedFile.FileName.Split('.').LastOrDefault();
 
-                var path = Path.Combine(Directory.GetCurrentDirectory(), folderDir);
                 Directory.CreateDirectory(path);
 
                 var filePath = Path.Combine(folderDir, fileName);
@@ -145,9 +173,23 @@ namespace eMentor.Common.Utils
                 {
                     uploadedFile.CopyTo(fileStream);
                 }
+
+                if (!string.IsNullOrWhiteSpace(oldName))
+                    DeleteFile(folderDir, oldName);
+
+                return fileName;
             }
 
-            return fileName;
+            return oldName;
+        }
+
+        private static string DeleteFile(string folderDir, string oldName)
+        {
+            var path = Path.Combine(Directory.GetCurrentDirectory(), folderDir);
+            var fileOld = Path.Combine(path, oldName);
+            if (File.Exists(fileOld))
+                File.Delete(fileOld);
+            return string.Empty;
         }
 
         public static string GetDisplayImageUrl(string imageName)

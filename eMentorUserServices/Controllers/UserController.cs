@@ -5,6 +5,7 @@ using eMentor.DBContext.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -89,6 +90,30 @@ namespace eMentorUserServices.Controllers
                 var response = await _userService.ChangePasscode(CurrentUser.UserId, model);
 
                 return GetResult(response);
+            }
+            catch (Exception ex)
+            {
+                return GetServerErrorResult(ex.ToString());
+            }
+        }
+
+        [HttpPost]
+        [Produces("application/json")]
+        [Route("[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> EditProfile([FromForm] UserApiModel model, [FromForm(Name = "uploadedFile")]IFormFile uploadedFile)
+        {
+            try
+            {
+                if ((!UtilCommon.IsValidEmail(model.Email) || !UtilCommon.IsValidPhone(model.Phone)))
+                {
+                    return GetBadRequestResult(ErrorMessageCode.EMAIL_OR_PHONE_NUMBER_INVALID);
+                }
+
+                var userEntity = await _userService.GetUserById(CurrentUser.UserId);
+
+
+                return GetOKResult(await _userService.EditProfile(model, uploadedFile, userEntity));
             }
             catch (Exception ex)
             {

@@ -1,5 +1,6 @@
 ﻿using eMentor.Common.Models;
 using eMentor.Entities.Entities;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -23,5 +24,6 @@ namespace eMentor.DBContext.Services
 
         Task<ResponseModel> ChangePasscode(int idUser, ChangePasscodeModel changePasscode);
         Task<User> GetUserProfile(UserTokenModel currentUser);
+        Task<int> EditProfile(UserApiModel model, IFormFile uploadedFile, User userEntity);
     }
 }
