@@ -52,7 +52,7 @@ namespace eMentor.Common.Models
             GenderModel = new HardcodeModel();
             RoleModel = new HardcodeModel();
         }
-        [JsonProperty(PropertyName = "userid")]
+        [JsonProperty(PropertyName = "userId")]
         public int UserId { get; set; }
 
         [JsonProperty(PropertyName = "avatar")]
@@ -61,7 +61,7 @@ namespace eMentor.Common.Models
         [JsonProperty(PropertyName = "email")]
         public string Email { get; set; }
 
-        [JsonProperty(PropertyName = "fullname")]
+        [JsonProperty(PropertyName = "fullName")]
         public string FullName { get; set; }
 
 
@@ -79,10 +79,10 @@ namespace eMentor.Common.Models
         [JsonProperty(PropertyName = "phone")]
         public string Phone { get;  set; }
 
-        [JsonProperty(PropertyName = "dateofbirth")]
+        [JsonProperty(PropertyName = "dateOfBirth")]
         public string DateOfBirth { get; set; }
 
-        [JsonProperty(PropertyName = "linkedsite")]
+        [JsonProperty(PropertyName = "linkedSite")]
         public string LinkedSite { get; set; }
 
         [JsonProperty(PropertyName = "address")]
