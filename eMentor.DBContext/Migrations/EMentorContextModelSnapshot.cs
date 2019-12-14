@@ -22,7 +22,11 @@ namespace eMentor.DBContext.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CourseType");
+                    b.Property<DateTime>("AvailableTime");
+
+                    b.Property<int>("CourseCategory");
+
+                    b.Property<string>("CourseImage");
 
                     b.Property<DateTime>("Created");
 
@@ -45,12 +49,12 @@ namespace eMentor.DBContext.Migrations
                     b.ToTable("Course");
 
                     b.HasData(
-                        new { Id = 1, CourseType = 1, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Master of Design Architechture", IsAvailable = true, IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Logo Design Course", OwnerId = 2 },
-                        new { Id = 2, CourseType = 2, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Hand Drawing", IsAvailable = true, IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Static Drawing", OwnerId = 3 },
-                        new { Id = 3, CourseType = 3, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Master of English", IsAvailable = true, IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "English", OwnerId = 4 },
-                        new { Id = 4, CourseType = 4, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Calculate as A Calculater", IsAvailable = true, IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Dominate The Dericurtive", OwnerId = 5 },
-                        new { Id = 5, CourseType = 5, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Become a full stack with JS", IsAvailable = true, IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "JS in a nutshell", OwnerId = 6 },
-                        new { Id = 6, CourseType = 7, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Learning how a crimer think", IsAvailable = true, IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Criminal Act", OwnerId = 7 }
+                        new { Id = 1, AvailableTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), CourseCategory = 1, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Master of Design Architechture", IsAvailable = true, IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Logo Design Course", OwnerId = 2 },
+                        new { Id = 2, AvailableTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), CourseCategory = 2, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Hand Drawing", IsAvailable = true, IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Static Drawing", OwnerId = 3 },
+                        new { Id = 3, AvailableTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), CourseCategory = 3, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Master of English", IsAvailable = true, IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "English", OwnerId = 4 },
+                        new { Id = 4, AvailableTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), CourseCategory = 4, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Calculate as A Calculater", IsAvailable = true, IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Dominate The Dericurtive", OwnerId = 5 },
+                        new { Id = 5, AvailableTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), CourseCategory = 5, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Become a full stack with JS", IsAvailable = true, IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "JS in a nutshell", OwnerId = 6 },
+                        new { Id = 6, AvailableTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), CourseCategory = 7, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Learning how a crimer think", IsAvailable = true, IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Criminal Act", OwnerId = 7 }
                     );
                 });
 
@@ -157,14 +161,22 @@ namespace eMentor.DBContext.Migrations
                     b.ToTable("HardCode");
 
                     b.HasData(
-                        new { Id = 1, Created = new DateTime(2019, 12, 8, 17, 30, 25, 658, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "UserRole", Value = 0 },
-                        new { Id = 2, Created = new DateTime(2019, 12, 8, 17, 30, 25, 658, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Admin", ParentId = "UserRole", Value = 1 },
-                        new { Id = 3, Created = new DateTime(2019, 12, 8, 17, 30, 25, 658, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Teacher", ParentId = "UserRole", Value = 2 },
-                        new { Id = 4, Created = new DateTime(2019, 12, 8, 17, 30, 25, 658, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Student", ParentId = "UserRole", Value = 3 },
-                        new { Id = 5, Created = new DateTime(2019, 12, 8, 17, 30, 25, 658, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Gender", Value = 0 },
-                        new { Id = 6, Created = new DateTime(2019, 12, 8, 17, 30, 25, 658, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Male", ParentId = "Gender", Value = 1 },
-                        new { Id = 7, Created = new DateTime(2019, 12, 8, 17, 30, 25, 658, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Female", ParentId = "Gender", Value = 2 },
-                        new { Id = 8, Created = new DateTime(2019, 12, 8, 17, 30, 25, 658, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Other", ParentId = "Gender", Value = 3 }
+                        new { Id = 1, Created = new DateTime(2019, 12, 14, 17, 43, 26, 9, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "UserRole", Value = 0 },
+                        new { Id = 2, Created = new DateTime(2019, 12, 14, 17, 43, 26, 9, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Admin", ParentId = "UserRole", Value = 1 },
+                        new { Id = 3, Created = new DateTime(2019, 12, 14, 17, 43, 26, 9, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Teacher", ParentId = "UserRole", Value = 2 },
+                        new { Id = 4, Created = new DateTime(2019, 12, 14, 17, 43, 26, 9, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Student", ParentId = "UserRole", Value = 3 },
+                        new { Id = 5, Created = new DateTime(2019, 12, 14, 17, 43, 26, 9, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Gender", Value = 0 },
+                        new { Id = 6, Created = new DateTime(2019, 12, 14, 17, 43, 26, 9, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Male", ParentId = "Gender", Value = 1 },
+                        new { Id = 7, Created = new DateTime(2019, 12, 14, 17, 43, 26, 9, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Female", ParentId = "Gender", Value = 2 },
+                        new { Id = 8, Created = new DateTime(2019, 12, 14, 17, 43, 26, 10, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Other", ParentId = "Gender", Value = 3 },
+                        new { Id = 9, Created = new DateTime(2019, 12, 14, 17, 43, 26, 10, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "CourseCategories", Value = 0 },
+                        new { Id = 10, Created = new DateTime(2019, 12, 14, 17, 43, 26, 10, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Design", ParentId = "CourseCategories", Value = 1 },
+                        new { Id = 11, Created = new DateTime(2019, 12, 14, 17, 43, 26, 10, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Drawing", ParentId = "CourseCategories", Value = 2 },
+                        new { Id = 12, Created = new DateTime(2019, 12, 14, 17, 43, 26, 10, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Language", ParentId = "CourseCategories", Value = 3 },
+                        new { Id = 13, Created = new DateTime(2019, 12, 14, 17, 43, 26, 10, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Math", ParentId = "CourseCategories", Value = 4 },
+                        new { Id = 14, Created = new DateTime(2019, 12, 14, 17, 43, 26, 10, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Programming", ParentId = "CourseCategories", Value = 5 },
+                        new { Id = 15, Created = new DateTime(2019, 12, 14, 17, 43, 26, 10, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Science", ParentId = "CourseCategories", Value = 6 },
+                        new { Id = 16, Created = new DateTime(2019, 12, 14, 17, 43, 26, 10, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Psycho", ParentId = "CourseCategories", Value = 7 }
                     );
                 });
 

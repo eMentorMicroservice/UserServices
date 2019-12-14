@@ -1,8 +1,10 @@
 ﻿using eMentor.Common.Models;
+using eMentor.Common.Utils;
 using eMentor.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static eMentor.Common.Utils.UtilEnum;
 
 namespace eMentor.Common.ApiModels
 {
@@ -13,6 +15,12 @@ namespace eMentor.Common.ApiModels
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public string AvailableTime { get; set; }
+
+        public CourseType CourseCategory { get; set; }
+
+        public string CourseImage { get; set; }
 
         public int OwnerId { get; set; }
 
@@ -32,6 +40,15 @@ namespace eMentor.Common.ApiModels
             model.Description = entity.Description;
             model.OwnerId = entity.OwnerId;
             model.Owner = entity.Owner;
+            model.CourseCategory = entity.CourseCategory;
+
+            if (string.IsNullOrWhiteSpace(entity.AvailableTime.ToString()))
+                model.AvailableTime = Constants.DEFAULT_DATEOFBIRTH;
+            else
+                model.AvailableTime = entity.AvailableTime.ToString();
+
+            model.CourseImage = UtilCommon.GetDisplayImageUrl(entity.CourseImage);
+
             return model;
         }
 

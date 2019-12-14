@@ -6,6 +6,7 @@ using eMentor.Common.Models;
 using eMentor.Controllers;
 using eMentor.DBContext.Services;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -31,13 +32,15 @@ namespace eMentorUserServices.Controllers
         [HttpPost]
         [Produces("application/json")]
         [Route("[action]")]
-        public async Task<IActionResult> CreateCourse([FromForm]CourseModel model)
+        public async Task<IActionResult> UploadCourse([FromForm]CourseModel model, [FromForm(Name = "uploadedImage")]IFormFile uploadedFile)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
-                var result = await _courseService.CreateCourse(model, CurrentUser.UserId);
+
+                var result = await _courseService.CreateCourse(model, CurrentUser.UserId, uploadedFile);
+
                 if (result != null)
                 {
                     return GetOKResult(result);

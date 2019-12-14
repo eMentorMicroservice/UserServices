@@ -10,7 +10,7 @@ namespace eMentor.DBContext.Services
 {
     public interface ICourseService
     {
-        Task<CourseApiModel> CreateCourse(CourseModel model, int ownerId);
+        Task<CourseApiModel> CreateCourse(CourseModel model, int ownerId, IFormFile uploadedFile);
         Task<IList<CourseApiModel>> GetCourses(string term, int? courseId = null);
         Task<ResponseModel> RemoveCourse(int courseId, int userId);
         Task<CourseApiModel> EditCourse(CourseModel model, int userId);

@@ -22,23 +22,28 @@ namespace eMentor.DBContext.Services.impl
             _courseRepo = new CourseRepository(contextFactory);
             _courseUserMapRepo = new CourseUserAssociationRepository(contextFactory);
         }
-        public async Task<CourseApiModel> CreateCourse(CourseModel model, int ownerId)
+        public async Task<CourseApiModel> CreateCourse(CourseModel model, int ownerId, IFormFile uploadedFile)
         {
             var entity = new Course();
             try
             {
                 var result = new CourseApiModel();
+
                 entity.OwnerId = ownerId;
+
+                entity.CourseImage = UtilCommon.ImageUpload(Constants.UserDataFolderName, uploadedFile, "", false);
+
                 entity = model.ToEntity(entity);
 
                 await _courseRepo.InsertAsync(entity);
 
                 
 
-                var users = _courseUserMapRepo.GetUserByCourseId(entity.Id);
-                var owner = await _userRepo.GetByIdAsync(ownerId);
+                //var users = _courseUserMapRepo.GetUserByCourseId(entity.Id);
+                //var owner = await _userRepo.GetByIdAsync(ownerId);
 
                 result = entity.ToModel();
+
                 return result;
             }
             catch (Exception ex)
@@ -101,7 +106,7 @@ namespace eMentor.DBContext.Services.impl
         {
             var respone = new ResponseModel();
             var course = await _courseRepo.GetByIdAsync(courseId);
-            var user = await _userRepo.GetByIdAsync(userId);
+            
             if (course == null)
             {
                 respone.Status = System.Net.HttpStatusCode.BadRequest;
