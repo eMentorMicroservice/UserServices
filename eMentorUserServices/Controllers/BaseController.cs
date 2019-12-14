@@ -56,7 +56,7 @@ namespace eMentor.Controllers
         protected UserTokenModel GetUserIdentify()
         {
 
-            //Get user id from token - using on future
+            //Get user id from token
             var userModel = new UserTokenModel();
 
             var identity = HttpContext.User.Identity as System.Security.Claims.ClaimsIdentity;

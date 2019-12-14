@@ -1,11 +1,14 @@
 ﻿using eMentor.Common.Models;
 using eMentor.Controllers;
 using eMentor.DBContext.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace eMentorUserServices.Controllers
@@ -14,14 +17,17 @@ namespace eMentorUserServices.Controllers
     [ApiController]
     public class HomeController : BaseController
     {
+        private readonly IGeneralService _generalService;
         private readonly ITokenManager _tokenManager;
         public HomeController(
+            IGeneralService generalService,
             IUserService userService,
             ILogger<HomeController> loggerService,
             IHostingEnvironment environment,
             ITokenManager tokenManager) : base(loggerService, environment, userService)
         {
             _tokenManager = tokenManager;
+            _generalService = generalService;
         }
 
         [HttpGet]
@@ -31,7 +37,7 @@ namespace eMentorUserServices.Controllers
         }
 
         [HttpPost]
-        [Route("login")]
+        [Route("[action]")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             if (model == null || string.IsNullOrWhiteSpace(model.PassCode)) 
@@ -56,6 +62,21 @@ namespace eMentorUserServices.Controllers
             }
         }
 
-        
+        [HttpGet]
+        [Produces("application/json")]
+        [Route("[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> GetHardCodes(string hardCodeParent)
+        {
+            try
+            {
+
+                return GetOKResult(_generalService.GetHardcodes(hardCodeParent));
+            }
+            catch (Exception ex)
+            {
+                return GetServerErrorResult(ex.ToString());
+            }
+        }
     }
 }
