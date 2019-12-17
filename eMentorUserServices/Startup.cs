@@ -61,7 +61,6 @@ namespace eMentorUserServices
                 {
                     inputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
                 }
-                //options.Filters.Add(new ApiValidationActionFilter());
             });
 
 

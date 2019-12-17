@@ -63,7 +63,6 @@ namespace eMentor.DBContext.Services.impl
                     result.Status = System.Net.HttpStatusCode.OK;
                     LoginApiModel data = new LoginApiModel();
                     data.IsFirstLogin = user.IsFirstLogin;
-                    //Get Token
                     data.Token = _jwtHandler.Create(user.Id.ToString(), expireToken, user.Role);
                     data.Avatar = UtilCommon.GetDisplayImageUrl(user.Avatar);
                     data.FullName = user.FullName;

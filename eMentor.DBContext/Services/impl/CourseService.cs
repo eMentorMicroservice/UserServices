@@ -37,12 +37,7 @@ namespace eMentor.DBContext.Services.impl
 
                 await _courseRepo.InsertAsync(entity);
 
-                
-
-                //var users = _courseUserMapRepo.GetUserByCourseId(entity.Id);
-                //var owner = await _userRepo.GetByIdAsync(ownerId);
-
-                result = entity.ToModel();
+               result = entity.ToModel();
 
                 return result;
             }

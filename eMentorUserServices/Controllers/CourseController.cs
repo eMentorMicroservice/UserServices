@@ -28,7 +28,6 @@ namespace eMentorUserServices.Controllers
             _courseService = courseService;
             _tokenManager = tokenManager;
         }
-        // GET api/values
         [HttpPost]
         [Produces("application/json")]
         [Route("[action]")]
