@@ -10,6 +10,7 @@ using eMentor.DBContext.Repositories;
 using eMentor.DBContext.Repositories.impl;
 using eMentor.Entities.Entities;
 using Microsoft.AspNetCore.Http;
+using static eMentor.Common.Utils.UtilEnum;
 
 namespace eMentor.DBContext.Services.impl
 {
@@ -49,7 +50,7 @@ namespace eMentor.DBContext.Services.impl
             }
         }
 
-        public async Task<CourseApiModel> EditCourse(CourseModel model, int userId)
+        public async Task<CourseApiModel> EditCourse(CourseModel model, int userId, IFormFile uploadedFile)
         {
             try
             {
@@ -60,6 +61,8 @@ namespace eMentor.DBContext.Services.impl
                 if (entity == null) return result;
 
                 entity = model.ToEntity(entity);
+
+                entity.CourseImage = UtilCommon.ImageUpload(Constants.UserDataFolderName, uploadedFile, "", false);
 
                 await _courseRepo.UpdateAsync(entity);
                
@@ -93,6 +96,11 @@ namespace eMentor.DBContext.Services.impl
             }
 
             models = courses.ToListModels();
+
+            foreach (var each in models)
+            {
+                each.CategoryModel = _hardCodeRepository.GetHardCode(typeof(CourseType), (int)each.CourseCategory).ToModel();
+            }
 
             return models;
         }

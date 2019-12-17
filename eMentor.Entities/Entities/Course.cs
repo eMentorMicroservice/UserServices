@@ -10,7 +10,8 @@ namespace eMentor.Entities.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public bool IsAvailable { get; set; }
-        public DateTime AvailableTime { get; set; }
+        public DateTime AvailableFrom { get; set; }
+        public DateTime AvailableTo { get; set; }
         public CourseType CourseCategory { get; set; }
         public string CourseImage { get; set; }
 

@@ -13,6 +13,6 @@ namespace eMentor.DBContext.Services
         Task<CourseApiModel> CreateCourse(CourseModel model, int ownerId, IFormFile uploadedFile);
         Task<IList<CourseApiModel>> GetCourses(string term, int? courseId = null);
         Task<ResponseModel> RemoveCourse(int courseId, int userId);
-        Task<CourseApiModel> EditCourse(CourseModel model, int userId);
+        Task<CourseApiModel> EditCourse(CourseModel model, int userId, IFormFile uploadedFile);
     }
 }

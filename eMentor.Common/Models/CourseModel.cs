@@ -13,7 +13,8 @@ namespace eMentor.Common.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string AvailableTime { get; set; }
+        public string AvailableFrom { get; set; }
+        public string AvailableTo { get; set; }
         public CourseType CourseCategory { get; set; }
         public string CourseImage { get; set; }
     }
@@ -26,7 +27,8 @@ namespace eMentor.Common.Models
             course.Name = model.Name;
             course.Description = model.Description;
             course.CourseCategory = model.CourseCategory;
-            course.AvailableTime = UtilCommon.ConvertDateTime(model.AvailableTime, Constants.DATETIME_FORMAT);
+            course.AvailableFrom = UtilCommon.ConvertDateTime(model.AvailableFrom, Constants.DATETIME_FORMAT);
+            course.AvailableTo = UtilCommon.ConvertDateTime(model.AvailableTo, Constants.DATETIME_FORMAT);
             course.Id = model.Id;
             return course;
         }
@@ -38,6 +40,10 @@ namespace eMentor.Common.Models
                 Description = model.Description,
                 Id = model.Id,
                 Name = model.Name,
+                CourseCategory = model.CourseCategory,
+                CourseImage = model.CourseImage,
+                AvailableFrom = model.AvailableFrom,
+                AvailableTo = model.AvailableTo,
             };
 
             return vm;

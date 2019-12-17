@@ -70,7 +70,6 @@ namespace eMentorUserServices.Controllers
         {
             try
             {
-
                 return GetOKResult(_generalService.GetHardcodes(hardCodeParent));
             }
             catch (Exception ex)

@@ -52,14 +52,14 @@ namespace eMentor.DBContext
             modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Female", Created = DateTime.UtcNow, ParentId = "Gender", Value = (int)Gender.Female });
             modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Other", Created = DateTime.UtcNow, ParentId = "Gender", Value = (int)Gender.Other });
 
-            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "CourseCategories", Created = DateTime.UtcNow, ParentId = null, Value = 0 });
-            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Design", Created = DateTime.UtcNow, ParentId = "CourseCategories", Value = (int)CourseType.Design });
-            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Drawing", Created = DateTime.UtcNow, ParentId = "CourseCategories", Value = (int)CourseType.Drawing });
-            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Language", Created = DateTime.UtcNow, ParentId = "CourseCategories", Value = (int)CourseType.Language });
-            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Math", Created = DateTime.UtcNow, ParentId = "CourseCategories", Value = (int)CourseType.Math });
-            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Programming", Created = DateTime.UtcNow, ParentId = "CourseCategories", Value = (int)CourseType.Programming });
-            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Science", Created = DateTime.UtcNow, ParentId = "CourseCategories", Value = (int)CourseType.Science });
-            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Psycho", Created = DateTime.UtcNow, ParentId = "CourseCategories", Value = (int)CourseType.Psycho });
+            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "CourseType", Created = DateTime.UtcNow, ParentId = null, Value = 0 });
+            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Design", Created = DateTime.UtcNow, ParentId = "CourseType", Value = (int)CourseType.Design });
+            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Drawing", Created = DateTime.UtcNow, ParentId = "CourseType", Value = (int)CourseType.Drawing });
+            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Language", Created = DateTime.UtcNow, ParentId = "CourseType", Value = (int)CourseType.Language });
+            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Math", Created = DateTime.UtcNow, ParentId = "CourseType", Value = (int)CourseType.Math });
+            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Programming", Created = DateTime.UtcNow, ParentId = "CourseType", Value = (int)CourseType.Programming });
+            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Science", Created = DateTime.UtcNow, ParentId = "CourseType", Value = (int)CourseType.Science });
+            modelBuilder.Entity<HardCode>().HasData(new HardCode { Id = index++, Name = "Psycho", Created = DateTime.UtcNow, ParentId = "CourseType", Value = (int)CourseType.Psycho });
 
             #endregion
         }

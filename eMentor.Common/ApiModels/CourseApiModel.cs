@@ -16,9 +16,12 @@ namespace eMentor.Common.ApiModels
 
         public string Description { get; set; }
 
-        public string AvailableTime { get; set; }
+        public string AvailableFrom { get; set; }
+        public string AvailableTo { get; set; }
 
         public CourseType CourseCategory { get; set; }
+
+        public HardcodeModel CategoryModel { get; set; }
 
         public string CourseImage { get; set; }
 
@@ -28,6 +31,7 @@ namespace eMentor.Common.ApiModels
 
         public CourseApiModel()
         {
+            CategoryModel = new HardcodeModel();
         }
     }
     public static class SettingApiModelEmm
@@ -42,10 +46,15 @@ namespace eMentor.Common.ApiModels
             model.Owner = entity.Owner;
             model.CourseCategory = entity.CourseCategory;
 
-            if (string.IsNullOrWhiteSpace(entity.AvailableTime.ToString()))
-                model.AvailableTime = Constants.DEFAULT_DATEOFBIRTH;
+            if (string.IsNullOrWhiteSpace(entity.AvailableFrom.ToString()))
+                model.AvailableFrom = Constants.DEFAULT_DATEOFBIRTH;
             else
-                model.AvailableTime = entity.AvailableTime.ToString();
+                model.AvailableFrom = entity.AvailableFrom.ToString();
+
+            if (string.IsNullOrWhiteSpace(entity.AvailableTo.ToString()))
+                model.AvailableTo = Constants.DEFAULT_DATEOFBIRTH;
+            else
+                model.AvailableTo = entity.AvailableTo.ToString();
 
             model.CourseImage = UtilCommon.GetDisplayImageUrl(entity.CourseImage);
 

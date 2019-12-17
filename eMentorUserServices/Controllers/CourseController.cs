@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using eMentor.Common.Models;
 using eMentor.Controllers;
 using eMentor.DBContext.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +33,7 @@ namespace eMentorUserServices.Controllers
         [HttpPost]
         [Produces("application/json")]
         [Route("[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> UploadCourse([FromForm]CourseModel model, [FromForm(Name = "uploadedImage")]IFormFile uploadedFile)
         {
             try
@@ -57,6 +60,7 @@ namespace eMentorUserServices.Controllers
         [HttpGet]
         [Produces("application/json")]
         [Route("[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> GetCourses(string term = "", int? id = null, bool isViewCourse = false)
         {
             try
@@ -90,6 +94,7 @@ namespace eMentorUserServices.Controllers
         [HttpPost]
         [Produces("application/json")]
         [Route("[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> RemoveCourse(int courseId)
         {
             if (courseId == 0) return GetBadRequestResult(ErrorMessageCode.COURSE_NOT_FOUND);
@@ -117,11 +122,12 @@ namespace eMentorUserServices.Controllers
         [HttpPost]
         [Produces("application/json")]
         [Route("[action]")]
-        public async Task<IActionResult> EditCourse([FromForm]CourseModel model)
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> EditCourse([FromForm]CourseModel model, [FromForm(Name = "uploadedImage")]IFormFile uploadedFile)
         {
             try
             {
-                var result = await _courseService.EditCourse(model, CurrentUser.UserId);
+                var result = await _courseService.EditCourse(model, CurrentUser.UserId, uploadedFile);
                 if (result != null)
                 {
                     return GetOKResult(result);
