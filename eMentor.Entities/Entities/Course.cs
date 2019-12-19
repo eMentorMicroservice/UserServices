@@ -18,5 +18,6 @@ namespace eMentor.Entities.Entities
         public int OwnerId { get; set; }
         [ForeignKey("OwnerId")]
         public virtual User Owner { get; set; }
+        public virtual double CourseFee { get; set; }
     }
 }

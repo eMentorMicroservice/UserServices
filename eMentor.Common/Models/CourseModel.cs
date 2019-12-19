@@ -17,6 +17,7 @@ namespace eMentor.Common.Models
         public string AvailableTo { get; set; }
         public CourseType CourseCategory { get; set; }
         public string CourseImage { get; set; }
+        public double CourseFee { get; set; }
     }
 
     public static class CreateCourseModelEmm
@@ -29,6 +30,7 @@ namespace eMentor.Common.Models
             course.CourseCategory = model.CourseCategory;
             course.AvailableFrom = UtilCommon.ConvertDateTime(model.AvailableFrom, Constants.DATETIME_FORMAT);
             course.AvailableTo = UtilCommon.ConvertDateTime(model.AvailableTo, Constants.DATETIME_FORMAT);
+            course.CourseFee = model.CourseFee;
             course.Id = model.Id;
             return course;
         }
@@ -44,6 +46,7 @@ namespace eMentor.Common.Models
                 CourseImage = model.CourseImage,
                 AvailableFrom = model.AvailableFrom,
                 AvailableTo = model.AvailableTo,
+                CourseFee = model.CourseFee
             };
 
             return vm;

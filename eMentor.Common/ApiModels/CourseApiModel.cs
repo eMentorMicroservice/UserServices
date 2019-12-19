@@ -29,6 +29,8 @@ namespace eMentor.Common.ApiModels
 
         public User Owner { get; set; }
 
+        public double CourseFee { get; set; }
+
         public CourseApiModel()
         {
             CategoryModel = new HardcodeModel();
@@ -45,6 +47,7 @@ namespace eMentor.Common.ApiModels
             model.OwnerId = entity.OwnerId;
             model.Owner = entity.Owner;
             model.CourseCategory = entity.CourseCategory;
+            model.CourseFee = entity.CourseFee;
 
             if (string.IsNullOrWhiteSpace(entity.AvailableFrom.ToString()))
                 model.AvailableFrom = Constants.DEFAULT_DATEOFBIRTH;
