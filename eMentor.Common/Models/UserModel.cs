@@ -101,7 +101,6 @@ namespace eMentor.Common.Models
             if (entity == null)
                 entity = new User();
 
-            entity.PassCode = model.PassWord;
             entity.Email = model.Email;
             entity.FullName = model.FullName;
             entity.LinkedSite = model.LinkedSite;

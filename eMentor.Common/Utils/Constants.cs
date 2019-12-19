@@ -18,8 +18,8 @@ namespace eMentor.Common.Utils
 
         public const string DEFAULT_PASSCODE = "123456x@X";
 
-        public static string UserDataFolderName = @"D:\University\eMentorClientApp\src\assets\images";
-        public static string ImageDisplayPrefix = "assets/images/";
+        public static string UserDataFolderName = "wwwroot/UserData/Images";
+        public static string ImageDisplayPrefix = "/UserData/Images";
 
         public const string COLOR_YELLOW = "#AD07FA";
         public const string COLOR_RED = "#B60000";

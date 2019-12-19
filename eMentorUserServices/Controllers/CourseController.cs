@@ -140,5 +140,27 @@ namespace eMentorUserServices.Controllers
                 return GetServerErrorResult(ex.ToString());
             }
         }
+
+        [HttpGet]
+        [Produces("application/json")]
+        [Route("[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> GetCourseByMentor()
+        {
+            try
+            {
+                var result = await _courseService.GetCourseByMentor(CurrentUser.UserId);
+                if (result != null)
+                {
+                    return GetOKResult(result);
+                }
+
+                return GetServerErrorResult(ErrorMessageCode.SERVER_ERROR);
+            }
+            catch (Exception ex)
+            {
+                return GetServerErrorResult(ex.ToString());
+            }
+        }
     }
 }

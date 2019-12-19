@@ -77,6 +77,22 @@ namespace eMentor.DBContext.Services.impl
             }
         }
 
+        public async Task<IList<CourseApiModel>> GetCourseByMentor(int mentorId)
+        {
+            IList<CourseApiModel> models = new List<CourseApiModel>();
+            IList<Course> courses = new List<Course>();
+
+            courses = await _courseRepo.GetAllAsync();
+            models = courses.Where(x=>x.OwnerId == mentorId).ToList().ToListModels();
+
+            foreach (var each in models)
+            {
+                each.CategoryModel = _hardCodeRepository.GetHardCode(typeof(CourseType), (int)each.CourseCategory).ToModel();
+            }
+
+            return models;
+        }
+
         public async Task<IList<CourseApiModel>> GetCourses(string term, int? courseId = null)
         {
             IList<CourseApiModel> models = new List<CourseApiModel>();

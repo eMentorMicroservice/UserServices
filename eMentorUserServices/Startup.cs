@@ -165,7 +165,7 @@ namespace eMentorUserServices
             new StaticFileOptions()
             {
                 FileProvider = new PhysicalFileProvider(path),
-                //RequestPath = new PathString(Constants.ImageDisplayPrefix)
+                RequestPath = new PathString(Constants.ImageDisplayPrefix)
             });
 
             app.UseMvc(routes =>

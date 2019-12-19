@@ -196,7 +196,7 @@ namespace eMentor.Common.Utils
         {
             if (string.IsNullOrEmpty(imageName))
                 return string.Empty;
-            return Path.Combine(Constants.ImageDisplayPrefix, imageName);
+            return Path.Combine("http://localhost:5998" + Constants.ImageDisplayPrefix, imageName);
         }
 
         public static string EncryptMD5(string text)

@@ -14,5 +14,6 @@ namespace eMentor.DBContext.Services
         Task<IList<CourseApiModel>> GetCourses(string term, int? courseId = null);
         Task<ResponseModel> RemoveCourse(int courseId, int userId);
         Task<CourseApiModel> EditCourse(CourseModel model, int userId, IFormFile uploadedFile);
+        Task<IList<CourseApiModel>> GetCourseByMentor(int mentorId);
     }
 }

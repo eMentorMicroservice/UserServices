@@ -34,7 +34,6 @@ namespace eMentor.Common.Models
             course.Id = model.Id;
             return course;
         }
-
         public static CourseModel ToViewModel(this CourseApiModel model)
         {
             var vm = new CourseModel()
