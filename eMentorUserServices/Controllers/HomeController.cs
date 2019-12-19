@@ -77,5 +77,22 @@ namespace eMentorUserServices.Controllers
                 return GetServerErrorResult(ex.ToString());
             }
         }
+
+        [HttpGet]
+        [Produces("application/json")]
+        [Route("[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> Logout()
+        {
+            try
+            {
+                await _tokenManager.DeactivateCurrentAsync();
+                return GetOKResult(HttpStatusCode.OK.ToString());
+            }
+            catch (Exception ex)
+            {
+                return GetServerErrorResult(ex.ToString());
+            }
+        }
     }
 }
