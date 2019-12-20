@@ -25,5 +25,8 @@ namespace eMentor.DBContext.Services
         Task<ResponseModel> ChangePasscode(int idUser, ChangePasscodeModel changePasscode);
         Task<User> GetUserProfile(UserTokenModel currentUser);
         Task<int> EditProfile(UserApiModel model, IFormFile uploadedFile, User userEntity);
+        Task<ResponseModel> DeleteUser(int userId);
+        Task<ResponseModel> UpgradeUser(int userId);
+        Task<List<User>> GetAllUser();
     }
 }

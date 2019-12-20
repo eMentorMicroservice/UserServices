@@ -213,5 +213,48 @@ namespace eMentor.DBContext.Services.impl
 
             return await _userRepo.UpdateAsync(userEntity);
         }
+
+        public async Task<ResponseModel> DeleteUser(int userId)
+        {
+            var model = new ResponseModel();
+            var user = await _userRepo.GetByIdAsync(userId);
+            if (await _userRepo.DeleteAsync(user) > 0)
+            {
+                model.IsSuccess = true;
+                model.Status = System.Net.HttpStatusCode.OK;
+            }
+            else
+            {
+                model.Status = System.Net.HttpStatusCode.InternalServerError;
+                model.Error = ErrorMessageCode.CAN_NOT_DELETE_USER;
+            }
+
+            return model;
+        }
+
+        public async Task<ResponseModel> UpgradeUser(int userId)
+        {
+            var model = new ResponseModel();
+            var user = await _userRepo.GetByIdAsync(userId);
+            if (user.Role == UserRole.Student)
+                user.Role = UserRole.Teacher;
+            if (await _userRepo.UpdateAsync(user) > 0)
+            {
+                model.IsSuccess = true;
+                model.Status = System.Net.HttpStatusCode.OK;
+            }
+            else
+            {
+                model.Status = System.Net.HttpStatusCode.InternalServerError;
+                model.Error = ErrorMessageCode.CAN_NOT_UPGRADE_USER;
+            }
+
+            return model;
+        }
+
+        public async Task<List<User>> GetAllUser()
+        {
+            return await _userRepo.GetAllAsync();
+        }
     }
 }

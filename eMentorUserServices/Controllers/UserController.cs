@@ -120,5 +120,74 @@ namespace eMentorUserServices.Controllers
                 return GetServerErrorResult(ex.ToString());
             }
         }
+
+        [HttpPost]
+        [Route("[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> RemoveUser(int userId)
+        {
+            try
+            {
+                if (userId == 0) return GetBadRequestResult(ErrorMessageCode.USER_NOT_FOUND);
+
+                return GetResult(await _userService.DeleteUser(userId));
+
+            }
+            catch (Exception ex)
+            {
+                return GetServerErrorResult(ex.ToString());
+            }
+
+        }
+
+        [HttpPost]
+        [Route("[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> UpgradeUser(int userId)
+        {
+            try
+            {
+                if (userId == 0) return GetBadRequestResult(ErrorMessageCode.USER_NOT_FOUND);
+
+                return GetResult(await _userService.UpgradeUser(userId));
+
+            }
+            catch (Exception ex)
+            {
+                return GetServerErrorResult(ex.ToString());
+            }
+
+        }
+
+        [HttpGet]
+        [Route("[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> GetAllUser()
+        {
+            try
+            {
+                if (CurrentUser.UserRole != UtilEnum.UserRole.Administrator) return GetForbiddenErrorResult();
+                var users = await _userService.GetAllUser();
+                var model = new List<UserModel>();
+                foreach (var user in users)
+                {
+                    if (user.Role != UtilEnum.UserRole.Administrator) 
+                        model.Add(user.ToUserModel(CurrentUser.UserRole));
+
+                }
+                if (users != null)
+                {
+                    return GetOKResult(model);
+                }
+
+                return GetServerErrorResult(ErrorMessageCode.SERVER_ERROR);
+            }
+            catch (Exception ex)
+            {
+                return GetServerErrorResult(ex.ToString());
+            }
+
+        }
+
     }
 }
