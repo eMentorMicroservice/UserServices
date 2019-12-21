@@ -77,6 +77,29 @@ namespace eMentorUserServices.Controllers
             }
         }
 
+        [HttpGet]
+        [Produces("application/json")]
+        [Route("[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> GetProfileById(int id)
+        {
+            try
+            {
+                var user = await _userService.GetUserById(id);
+
+                if (user != null)
+                {
+                    return GetOKResult(user.ToUserModel(CurrentUser.UserRole));
+                }
+
+                return GetServerErrorResult(ErrorMessageCode.SERVER_ERROR);
+            }
+            catch (Exception ex)
+            {
+                return GetServerErrorResult(ex.ToString());
+            }
+        }
+
 
         [HttpPost]
         [Route("[action]")]
