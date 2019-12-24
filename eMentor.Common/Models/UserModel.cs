@@ -2,6 +2,7 @@
 using eMentor.Entities.Entities;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using static eMentor.Common.Utils.UtilEnum;
 
 namespace eMentor.Common.Models
@@ -9,7 +10,8 @@ namespace eMentor.Common.Models
     public class UserApiModel
     {
         public UserApiModel() 
-        {   
+        {
+            Exp = new List<UserExperience>();
         }
         [JsonProperty(PropertyName = "userid")]
         public int UserId { get; set; }
@@ -43,6 +45,11 @@ namespace eMentor.Common.Models
 
         [JsonProperty(PropertyName = "address")]
         public string Address { get; set; }
+        public string Bio { get; set; }
+        public string Location { get; set; }
+        public string Strength { get; set; }
+        public string Languages { get; set; }
+        public IList<UserExperience> Exp { get; set; }
     }
 
     public class UserModel
@@ -51,6 +58,7 @@ namespace eMentor.Common.Models
         {
             GenderModel = new HardcodeModel();
             RoleModel = new HardcodeModel();
+            Exp = new List<UserExperience>();
         }
         [JsonProperty(PropertyName = "userId")]
         public int UserId { get; set; }
@@ -87,6 +95,12 @@ namespace eMentor.Common.Models
 
         [JsonProperty(PropertyName = "address")]
         public string Address { get; set; }
+        public string Bio { get; set; }
+        public string Location { get; set; }
+        public string Strength { get; set; }
+        public string Languages { get; set; }
+        public IList<UserExperience> Exp { get; set; }
+        public string UserName { get; set; }
     }
 
     public class UserIdModel
@@ -109,7 +123,11 @@ namespace eMentor.Common.Models
             entity.Gender = model.Gender;
             entity.DateOfBirth = UtilCommon.ConvertDateTime(model.DateOfBirth, Constants.DATETIME_FORMAT);
             entity.Id = model.UserId;
-
+            entity.Bio = model.Bio;
+            entity.Location = model.Location;
+            entity.Strength = model.Strength;
+            entity.Languages = model.Languages;
+            entity.UserName = model.UserName;
             return entity;
         }
 
@@ -128,6 +146,12 @@ namespace eMentor.Common.Models
                 model.Gender = user.Gender;
                 model.LinkedSite = user.LinkedSite;
                 model.Address = user.Address;
+                model.Bio = user.Bio;
+                model.Location = user.Location;
+                model.Strength = user.Strength;
+                model.Languages = user.Languages;
+                model.UserName = user.UserName;
+                model.Exp = user.Exp;
                 if (string.IsNullOrWhiteSpace(user.DateOfBirth.ToString()))
                     model.DateOfBirth = Constants.DEFAULT_DATEOFBIRTH;
                 else

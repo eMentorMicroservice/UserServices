@@ -2,6 +2,7 @@
 using eMentor.Common.Utils;
 using eMentor.Controllers;
 using eMentor.DBContext.Services;
+using eMentor.Entities.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -63,7 +64,7 @@ namespace eMentorUserServices.Controllers
             try
             {
                 var user = await _userService.GetUserProfile(CurrentUser);
-
+                user.Exp = new List<UserExperience>() { new UserExperience { Id = 0, CompanySite = "abasdas", JobTitle =" aasc", Time= "1002-1233", Description = "thiss is some text thiss is some text thiss is some text thiss is some text thiss is some text" } };
                 if (user != null)
                 {
                     return GetOKResult(user.ToUserModel(CurrentUser.UserRole));

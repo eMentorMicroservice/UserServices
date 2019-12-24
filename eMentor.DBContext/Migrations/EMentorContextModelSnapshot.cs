@@ -95,6 +95,8 @@ namespace eMentor.DBContext.Migrations
 
                     b.Property<string>("Avatar");
 
+                    b.Property<string>("Bio");
+
                     b.Property<DateTime>("Created");
 
                     b.Property<DateTime>("DateOfBirth");
@@ -111,7 +113,11 @@ namespace eMentor.DBContext.Migrations
 
                     b.Property<bool>("IsHardCode");
 
+                    b.Property<string>("Languages");
+
                     b.Property<string>("LinkedSite");
+
+                    b.Property<string>("Location");
 
                     b.Property<DateTime>("Modified");
 
@@ -125,6 +131,8 @@ namespace eMentor.DBContext.Migrations
 
                     b.Property<string>("Salt");
 
+                    b.Property<string>("Strength");
+
                     b.Property<string>("UserName");
 
                     b.HasKey("Id");
@@ -132,15 +140,45 @@ namespace eMentor.DBContext.Migrations
                     b.ToTable("User");
 
                     b.HasData(
-                        new { Id = 1, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Email = "admin@gmail.com", FullName = "Mr Admin", Gender = 3, IsDeactivate = false, IsFirstLogin = false, IsHardCode = true, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PassCode = "4gCaQiDMvnCFGpzB3UXGbWZ0cxFeVAi69XbUtGNZRno=", Phone = "0132666666", Role = 1, Salt = "00000000-0000-0000-0000-000000000000", UserName = "Administrator" },
+                        new { Id = 1, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Email = "admin@ementor.com", FullName = "Mr Admin", Gender = 3, IsDeactivate = false, IsFirstLogin = false, IsHardCode = true, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PassCode = "4gCaQiDMvnCFGpzB3UXGbWZ0cxFeVAi69XbUtGNZRno=", Phone = "0132666666", Role = 1, Salt = "00000000-0000-0000-0000-000000000000", UserName = "Administrator" },
                         new { Id = 2, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Email = "teacher1@gmail.com", FullName = "Mr 1", Gender = 3, IsDeactivate = false, IsFirstLogin = false, IsHardCode = true, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PassCode = "4gCaQiDMvnCFGpzB3UXGbWZ0cxFeVAi69XbUtGNZRno=", Phone = "0132666665", Role = 2, Salt = "00000000-0000-0000-0000-000000000000", UserName = "Teacher1" },
                         new { Id = 3, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Email = "teacher2@gmail.com", FullName = "Mr 2", Gender = 3, IsDeactivate = false, IsFirstLogin = false, IsHardCode = true, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PassCode = "4gCaQiDMvnCFGpzB3UXGbWZ0cxFeVAi69XbUtGNZRno=", Phone = "0132666664", Role = 2, Salt = "00000000-0000-0000-0000-000000000000", UserName = "Teacher2" },
                         new { Id = 4, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Email = "teacher3@gmail.com", FullName = "Mr 3", Gender = 3, IsDeactivate = false, IsFirstLogin = false, IsHardCode = true, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PassCode = "4gCaQiDMvnCFGpzB3UXGbWZ0cxFeVAi69XbUtGNZRno=", Phone = "0132666663", Role = 2, Salt = "00000000-0000-0000-0000-000000000000", UserName = "Teacher3" },
                         new { Id = 5, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Email = "teacher4@gmail.com", FullName = "Mr 4", Gender = 3, IsDeactivate = false, IsFirstLogin = false, IsHardCode = true, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PassCode = "4gCaQiDMvnCFGpzB3UXGbWZ0cxFeVAi69XbUtGNZRno=", Phone = "0132666662", Role = 2, Salt = "00000000-0000-0000-0000-000000000000", UserName = "Teacher4" },
                         new { Id = 6, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Email = "teacher5@gmail.com", FullName = "Mr 5", Gender = 3, IsDeactivate = false, IsFirstLogin = false, IsHardCode = true, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PassCode = "4gCaQiDMvnCFGpzB3UXGbWZ0cxFeVAi69XbUtGNZRno=", Phone = "0132666661", Role = 2, Salt = "00000000-0000-0000-0000-000000000000", UserName = "Teacher5" },
                         new { Id = 7, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Email = "teacher6@gmail.com", FullName = "Mr 6", Gender = 3, IsDeactivate = false, IsFirstLogin = false, IsHardCode = true, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PassCode = "4gCaQiDMvnCFGpzB3UXGbWZ0cxFeVAi69XbUtGNZRno=", Phone = "0132666660", Role = 2, Salt = "00000000-0000-0000-0000-000000000000", UserName = "Teacher6" },
-                        new { Id = 8, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Email = "student1@gmail.com", FullName = "St 1", Gender = 3, IsDeactivate = false, IsFirstLogin = false, IsHardCode = true, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PassCode = "4gCaQiDMvnCFGpzB3UXGbWZ0cxFeVAi69XbUtGNZRno=", Phone = "0132666666", Role = 3, Salt = "00000000-0000-0000-0000-000000000000", UserName = "Student1" }
+                        new { Id = 8, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Email = "student1@gmail.com", FullName = "St 1", Gender = 3, IsDeactivate = false, IsFirstLogin = false, IsHardCode = true, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PassCode = "4gCaQiDMvnCFGpzB3UXGbWZ0cxFeVAi69XbUtGNZRno=", Phone = "0132666667", Role = 3, Salt = "00000000-0000-0000-0000-000000000000", UserName = "Student1" },
+                        new { Id = 9, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Email = "student2@gmail.com", FullName = "St 2", Gender = 3, IsDeactivate = false, IsFirstLogin = false, IsHardCode = true, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PassCode = "4gCaQiDMvnCFGpzB3UXGbWZ0cxFeVAi69XbUtGNZRno=", Phone = "0132666668", Role = 3, Salt = "00000000-0000-0000-0000-000000000000", UserName = "Student2" },
+                        new { Id = 10, Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Email = "student3@gmail.com", FullName = "St 3", Gender = 3, IsDeactivate = false, IsFirstLogin = false, IsHardCode = true, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PassCode = "4gCaQiDMvnCFGpzB3UXGbWZ0cxFeVAi69XbUtGNZRno=", Phone = "0132666669", Role = 3, Salt = "00000000-0000-0000-0000-000000000000", UserName = "Student3" }
                     );
+                });
+
+            modelBuilder.Entity("eMentor.Entities.Entities.UserExperience", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CompanySite");
+
+                    b.Property<DateTime>("Created");
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("IsDeactivate");
+
+                    b.Property<string>("JobTitle");
+
+                    b.Property<int>("MentorId");
+
+                    b.Property<DateTime>("Modified");
+
+                    b.Property<string>("Time");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MentorId");
+
+                    b.ToTable("UserExperiences");
                 });
 
             modelBuilder.Entity("eMentor.Entities.HardCode", b =>
@@ -165,22 +203,22 @@ namespace eMentor.DBContext.Migrations
                     b.ToTable("HardCode");
 
                     b.HasData(
-                        new { Id = 1, Created = new DateTime(2019, 12, 20, 6, 52, 54, 455, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "UserRole", Value = 0 },
-                        new { Id = 2, Created = new DateTime(2019, 12, 20, 6, 52, 54, 456, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Admin", ParentId = "UserRole", Value = 1 },
-                        new { Id = 3, Created = new DateTime(2019, 12, 20, 6, 52, 54, 456, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Teacher", ParentId = "UserRole", Value = 2 },
-                        new { Id = 4, Created = new DateTime(2019, 12, 20, 6, 52, 54, 456, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Student", ParentId = "UserRole", Value = 3 },
-                        new { Id = 5, Created = new DateTime(2019, 12, 20, 6, 52, 54, 456, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Gender", Value = 0 },
-                        new { Id = 6, Created = new DateTime(2019, 12, 20, 6, 52, 54, 456, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Male", ParentId = "Gender", Value = 1 },
-                        new { Id = 7, Created = new DateTime(2019, 12, 20, 6, 52, 54, 456, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Female", ParentId = "Gender", Value = 2 },
-                        new { Id = 8, Created = new DateTime(2019, 12, 20, 6, 52, 54, 456, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Other", ParentId = "Gender", Value = 3 },
-                        new { Id = 9, Created = new DateTime(2019, 12, 20, 6, 52, 54, 456, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "CourseType", Value = 0 },
-                        new { Id = 10, Created = new DateTime(2019, 12, 20, 6, 52, 54, 456, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Design", ParentId = "CourseType", Value = 1 },
-                        new { Id = 11, Created = new DateTime(2019, 12, 20, 6, 52, 54, 456, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Drawing", ParentId = "CourseType", Value = 2 },
-                        new { Id = 12, Created = new DateTime(2019, 12, 20, 6, 52, 54, 456, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Language", ParentId = "CourseType", Value = 3 },
-                        new { Id = 13, Created = new DateTime(2019, 12, 20, 6, 52, 54, 456, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Math", ParentId = "CourseType", Value = 4 },
-                        new { Id = 14, Created = new DateTime(2019, 12, 20, 6, 52, 54, 456, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Programming", ParentId = "CourseType", Value = 5 },
-                        new { Id = 15, Created = new DateTime(2019, 12, 20, 6, 52, 54, 456, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Science", ParentId = "CourseType", Value = 6 },
-                        new { Id = 16, Created = new DateTime(2019, 12, 20, 6, 52, 54, 456, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Psycho", ParentId = "CourseType", Value = 7 }
+                        new { Id = 1, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "UserRole", Value = 0 },
+                        new { Id = 2, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Admin", ParentId = "UserRole", Value = 1 },
+                        new { Id = 3, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Teacher", ParentId = "UserRole", Value = 2 },
+                        new { Id = 4, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Student", ParentId = "UserRole", Value = 3 },
+                        new { Id = 5, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Gender", Value = 0 },
+                        new { Id = 6, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Male", ParentId = "Gender", Value = 1 },
+                        new { Id = 7, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Female", ParentId = "Gender", Value = 2 },
+                        new { Id = 8, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Other", ParentId = "Gender", Value = 3 },
+                        new { Id = 9, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "CourseType", Value = 0 },
+                        new { Id = 10, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Design", ParentId = "CourseType", Value = 1 },
+                        new { Id = 11, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Drawing", ParentId = "CourseType", Value = 2 },
+                        new { Id = 12, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Language", ParentId = "CourseType", Value = 3 },
+                        new { Id = 13, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Math", ParentId = "CourseType", Value = 4 },
+                        new { Id = 14, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Programming", ParentId = "CourseType", Value = 5 },
+                        new { Id = 15, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Science", ParentId = "CourseType", Value = 6 },
+                        new { Id = 16, Created = new DateTime(2019, 12, 23, 18, 35, 24, 154, DateTimeKind.Utc), IsDeactivate = false, Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Psycho", ParentId = "CourseType", Value = 7 }
                     );
                 });
 
@@ -202,6 +240,14 @@ namespace eMentor.DBContext.Migrations
                     b.HasOne("eMentor.Entities.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("eMentor.Entities.Entities.UserExperience", b =>
+                {
+                    b.HasOne("eMentor.Entities.Entities.User", "Mentor")
+                        .WithMany("Exp")
+                        .HasForeignKey("MentorId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

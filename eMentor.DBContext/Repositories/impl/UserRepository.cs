@@ -1,6 +1,7 @@
 ﻿using eMentor.Common.Models;
 using eMentor.Common.Utils;
 using eMentor.Entities.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,19 @@ namespace eMentor.DBContext.Repositories.impl
         {
 
         }
+        public override async Task<User> GetByIdAsync(object id, bool includeDeactive = true)
+        {
+            using (var context = ContextFactory.CreateDbContext())
+            {
+                var obj = context.Set<User>().Where(p => p.Id == (int)id).Include(p=>p.Exp);
+
+                if (!includeDeactive)
+                    obj.Where(p => p.IsDeactivate == false);
+
+                return await obj.FirstOrDefaultAsync();
+            }
+        }
+
         public  List<int> GetAllUserId()
         {
             return  GetAll(q => !q.IsHardCode).Select(p => p.Id).ToList();

@@ -1,5 +1,6 @@
 ﻿using eMentor.Entities.Entities.Base;
 using System;
+using System.Collections.Generic;
 using static eMentor.Common.Utils.UtilEnum;
 
 namespace eMentor.Entities.Entities
@@ -21,5 +22,10 @@ namespace eMentor.Entities.Entities
         public string Address { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string LinkedSite { get; set; }
+        public string Bio { get; set; }
+        public string Location { get; set; }
+        public string Strength { get; set; }
+        public string Languages { get; set; }
+        public virtual IList<UserExperience> Exp { get; set; }
     }
 }
