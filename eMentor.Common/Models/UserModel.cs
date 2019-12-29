@@ -148,6 +148,7 @@ namespace eMentor.Common.Models
                 model.Strength = user.Strength;
                 model.Languages = user.Languages;
                 model.UserName = user.UserName;
+                model.UserId = user.Id;
 
                 if (string.IsNullOrWhiteSpace(user.DateOfBirth.ToString()))
                     model.DateOfBirth = Constants.DEFAULT_DATEOFBIRTH;
