@@ -20,7 +20,7 @@ namespace eMentor.DBContext.Repositories.impl
         {
             using (var context = ContextFactory.CreateDbContext())
             {
-                var obj = context.Set<User>().Where(p => p.Id == (int)id).Include(p=>p.Exp);
+                var obj = context.Set<User>().Where(p => p.Id == (int)id);
 
                 if (!includeDeactive)
                     obj.Where(p => p.IsDeactivate == false);

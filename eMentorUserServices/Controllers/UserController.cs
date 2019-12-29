@@ -21,13 +21,16 @@ namespace eMentorUserServices.Controllers
     public class UserController : BaseController
     {
         private readonly ITokenManager _tokenManager;
+        private readonly IUserExperimentService _userExperimentService;
         public UserController(
+            IUserExperimentService userExperimentService,
             IUserService userService,
             ILogger<HomeController> loggerService,
             IHostingEnvironment environment,
             ITokenManager tokenManager) : base(loggerService, environment, userService)
         {
             _tokenManager = tokenManager;
+            _userExperimentService = userExperimentService;
         }
         [HttpPost]
         [Route("[action]")]
@@ -64,10 +67,13 @@ namespace eMentorUserServices.Controllers
             try
             {
                 var user = await _userService.GetUserProfile(CurrentUser);
-                user.Exp = new List<UserExperience>() { new UserExperience { Id = 0, CompanySite = "abasdas", JobTitle =" aasc", Time= "1002-1233", Description = "thiss is some text thiss is some text thiss is some text thiss is some text thiss is some text" } };
                 if (user != null)
                 {
-                    return GetOKResult(user.ToUserModel(CurrentUser.UserRole));
+                    var model = user.ToUserModel(CurrentUser.UserRole);
+                    model.Exp = new UserExperienceModels();
+                    model.Exp.UserExperienceModel = _userExperimentService.GetUserExperiences(CurrentUser.UserId).ToList();
+                    model.Exp.Counter = model.Exp.UserExperienceModel.Count();
+                    return GetOKResult(model);
                 }
 
                 return GetServerErrorResult(ErrorMessageCode.SERVER_ERROR);
@@ -90,7 +96,11 @@ namespace eMentorUserServices.Controllers
 
                 if (user != null)
                 {
-                    return GetOKResult(user.ToUserModel(CurrentUser.UserRole));
+                    var model = user.ToUserModel(CurrentUser.UserRole);
+                    model.Exp = new UserExperienceModels();
+                    model.Exp.UserExperienceModel = _userExperimentService.GetUserExperiences(CurrentUser.UserId).ToList();
+                    model.Exp.Counter = model.Exp.UserExperienceModel.Count();
+                    return GetOKResult(model);
                 }
 
                 return GetServerErrorResult(ErrorMessageCode.SERVER_ERROR);
@@ -138,6 +148,23 @@ namespace eMentorUserServices.Controllers
 
 
                 return GetOKResult(await _userService.EditProfile(model, uploadedFile, userEntity));
+            }
+            catch (Exception ex)
+            {
+                return GetServerErrorResult(ex.ToString());
+            }
+        }
+
+        [Produces("application/json")]
+        [Route("[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> AddOrEditUserExperiment([FromBody] UserExperienceModels model)
+        {
+            try
+            {
+                if (model.Counter == 0) return GetOKResult(true);
+
+                return GetOKResult(await _userExperimentService.UpdateUserExp(model, CurrentUser.UserId));
             }
             catch (Exception ex)
             {

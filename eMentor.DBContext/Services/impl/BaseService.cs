@@ -11,11 +11,13 @@ namespace eMentor.DBContext.Services.impl
     public abstract class BaseService : IBaseService
     {
         protected IUserRespository _userRepo;
+        protected IUserExperienceRepository _userExperienceRepository;
         protected IHardCodeRepository _hardCodeRepository;
 
         public BaseService(DbContextFactory contextFactory)
         {
             _userRepo = new UserRepository(contextFactory);
+            _userExperienceRepository = new UserExperienceRepository(contextFactory);
             _hardCodeRepository = new HardCodeRepository(contextFactory);
         }
      }

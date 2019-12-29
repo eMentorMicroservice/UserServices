@@ -87,6 +87,7 @@ namespace eMentorUserServices
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<TokenManagerMiddleware>();
             services.AddTransient<ICourseService, CourseService>();
+            services.AddTransient<IUserExperimentService, UserExperimentService>();
 
 
             //JWT

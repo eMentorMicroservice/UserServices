@@ -11,7 +11,6 @@ namespace eMentor.Common.Models
     {
         public UserApiModel() 
         {
-            Exp = new List<UserExperience>();
         }
         [JsonProperty(PropertyName = "userid")]
         public int UserId { get; set; }
@@ -49,7 +48,6 @@ namespace eMentor.Common.Models
         public string Location { get; set; }
         public string Strength { get; set; }
         public string Languages { get; set; }
-        public IList<UserExperience> Exp { get; set; }
     }
 
     public class UserModel
@@ -58,7 +56,6 @@ namespace eMentor.Common.Models
         {
             GenderModel = new HardcodeModel();
             RoleModel = new HardcodeModel();
-            Exp = new List<UserExperience>();
         }
         [JsonProperty(PropertyName = "userId")]
         public int UserId { get; set; }
@@ -85,7 +82,7 @@ namespace eMentor.Common.Models
         public HardcodeModel RoleModel { get; set; }
 
         [JsonProperty(PropertyName = "phone")]
-        public string Phone { get;  set; }
+        public string Phone { get; set; }
 
         [JsonProperty(PropertyName = "dateOfBirth")]
         public string DateOfBirth { get; set; }
@@ -99,8 +96,8 @@ namespace eMentor.Common.Models
         public string Location { get; set; }
         public string Strength { get; set; }
         public string Languages { get; set; }
-        public IList<UserExperience> Exp { get; set; }
         public string UserName { get; set; }
+        public UserExperienceModels Exp {get;set;}
     }
 
     public class UserIdModel
@@ -151,7 +148,7 @@ namespace eMentor.Common.Models
                 model.Strength = user.Strength;
                 model.Languages = user.Languages;
                 model.UserName = user.UserName;
-                model.Exp = user.Exp;
+
                 if (string.IsNullOrWhiteSpace(user.DateOfBirth.ToString()))
                     model.DateOfBirth = Constants.DEFAULT_DATEOFBIRTH;
                 else

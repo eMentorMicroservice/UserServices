@@ -26,6 +26,5 @@ namespace eMentor.Entities.Entities
         public string Location { get; set; }
         public string Strength { get; set; }
         public string Languages { get; set; }
-        public virtual IList<UserExperience> Exp { get; set; }
     }
 }
