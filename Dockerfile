@@ -13,10 +13,8 @@ RUN dotnet restore "eMentorUserServices/eMentorUserServices.csproj"
 COPY . .
 WORKDIR "/src/eMentorUserServices"
 RUN dotnet build "eMentorUserServices.csproj" -c Release -o /app/build
-
 FROM build AS publish
 RUN dotnet publish "eMentorUserServices.csproj" -c Release -o /app/publish
-
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
